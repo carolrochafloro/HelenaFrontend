@@ -1,0 +1,74 @@
+:host {
+  .med-chip {
+    background: var(--lighter-grey);
+    padding: 1rem;
+    margin: 1rem 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    border-radius: 6rem;
+    padding: 1rem 1.5rem;
+
+    .med-data {
+      h3 {
+        font-size: 1.5rem;
+      }
+      p {
+        font-weight: 600;
+      }
+    }
+
+    .med-time {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      p {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 900;
+        color: var(--black);
+      }
+    }
+
+    .med-check {
+      display: flex;
+      justify-content: end;
+      align-items: center;
+
+      input {
+        cursor: pointer;
+        position: absolute;
+        opacity: 0;
+        width: 40px; /* Garante que a área clicável tenha pelo menos 40px */
+        height: 40px; /* Garante que a área clicável tenha pelo menos 40px */
+      }
+
+      label {
+        display: inline-block;
+        width: 40px; /* Ajusta o tamanho do label */
+        height: 40px; /* Ajusta o tamanho do label */
+        background-color: #fff;
+        border: 2px solid var(--medium-grey);
+        border-radius: 50%; /* Torna o checkbox redondo */
+        position: relative;
+      }
+
+      input[type="checkbox"]:checked + label {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+      }
+
+      input[type="checkbox"]:checked + label::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 1rem;
+        height: 1rem;
+        background-color: var(--black);
+        border-radius: 50%; /* Torna o checkmark redondo */
+        transform: translate(-50%, -50%); /* Centraliza o checkmark */
+      }
+    }
+  }
+}
