@@ -2,6 +2,13 @@ body {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  margin: 0;
+  font-family: "Nunito", sans-serif;
+}
+
+html {
+  font-size: 18px;
+  height: 100%;
 }
 
 .container {
@@ -9,4 +16,7 @@ body {
   flex-direction: column;
   flex-wrap: wrap;
   position: relative;
+  padding: 2rem;
+  justify-content: center;
+  align-items: center;
 }
