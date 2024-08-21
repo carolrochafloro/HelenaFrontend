@@ -1,0 +1,11 @@
+:host {
+  .container {
+    margin-top: 100px;
+
+    .btn-div {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+  }
+}
