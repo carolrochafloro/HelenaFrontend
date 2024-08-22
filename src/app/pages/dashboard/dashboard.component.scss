@@ -2,6 +2,10 @@
   .container {
     margin-top: 100px;
 
+    p {
+      margin: 6rem 0;
+    }
+
     .btn-div {
       display: grid;
       grid-template-columns: 1fr 1fr;

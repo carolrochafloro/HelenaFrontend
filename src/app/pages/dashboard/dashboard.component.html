@@ -2,7 +2,12 @@
 
 <div class="container">
   <h1>Remédios do dia</h1>
+
+  @if (medslist === null) {
+  <p>Você não precisa tomar nenhum remédio hoje!</p>
+  } @else {
   <div><app-day-medication-chip /></div>
+  }
   <div class="btn-div">
     <button type="button" class="btn">Novo remédio</button>
     <button type="button" class="btn">Ver todos</button>
