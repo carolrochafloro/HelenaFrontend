@@ -1,7 +1,4 @@
 :host {
-  section {
-    width: 80%;
-  }
   .med-chip {
     background: var(--lighter-grey);
     padding: 1rem;
@@ -11,7 +8,9 @@
     gap: 10px;
     border-radius: 6rem;
     padding: 1rem 1.5rem;
-    width: 80%;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 
     .med-data {
       h3 {
@@ -43,8 +42,8 @@
         cursor: pointer;
         position: absolute;
         opacity: 0;
-        width: 40px; /* Garante que a área clicável tenha pelo menos 40px */
-        height: 40px; /* Garante que a área clicável tenha pelo menos 40px */
+        width: 40px;
+        height: 40px;
       }
 
       label {
