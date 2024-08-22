@@ -1,7 +1,10 @@
 export interface IMedToday {
-  name: string;
-  dosage: string;
-  time: Date;
-  notes: string;
-  taken: boolean;
+  id: string;
+  medicationId: string;
+  date: string;
+  medication: {
+    name: string;
+    dosage: string;
+    notes: string;
+  };
 }

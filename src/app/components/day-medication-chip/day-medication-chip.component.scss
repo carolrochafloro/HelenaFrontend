@@ -1,4 +1,7 @@
 :host {
+  section {
+    width: 80%;
+  }
   .med-chip {
     background: var(--lighter-grey);
     padding: 1rem;
@@ -8,6 +11,7 @@
     gap: 10px;
     border-radius: 6rem;
     padding: 1rem 1.5rem;
+    width: 80%;
 
     .med-data {
       h3 {
