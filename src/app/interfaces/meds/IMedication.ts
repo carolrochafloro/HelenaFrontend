@@ -12,4 +12,7 @@ export interface IMedication {
   end: Date;
   frequencyType: FrequencyType;
   recurrency: number;
+  doctorId: string;
+  doctorName: string;
+  doctorSpecialty: string;
 }
