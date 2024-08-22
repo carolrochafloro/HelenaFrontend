@@ -5,6 +5,7 @@ import {
   OnInit,
   signal,
 } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { DayMedicationChipComponent } from '@components/day-medication-chip/day-medication-chip.component';
 import { HeaderComponent } from '@components/header/header.component';
 import { IMedToday } from 'app/interfaces/meds/IMedToday';
@@ -13,7 +14,7 @@ import { MedicationService } from 'app/services/medication.service';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [HeaderComponent, DayMedicationChipComponent],
+  imports: [HeaderComponent, DayMedicationChipComponent, RouterModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -35,7 +36,6 @@ export class DashboardComponent implements OnInit {
       },
       complete: () => {
         console.log('Completo.');
-        console.log(this.medslist());
       },
     });
   }

@@ -1,0 +1,20 @@
+<section>
+  <div>
+    <h2>{{ med.name }}</h2>
+  </div>
+  <div>
+    <p>Dosagem: {{ med.dosage }}</p>
+    <p>
+      Frequência: {{ med.recurrency }} por
+      {{ FrequencyType[med.frequencyType] }}
+    </p>
+  </div>
+  <div>
+    <p>
+      <span style="font-weight: 700">Prescrito por: </span><br />
+      Nome do médico
+    </p>
+  </div>
+  <div><p>Ativo</p></div>
+  <div class="more">+</div>
+</section>

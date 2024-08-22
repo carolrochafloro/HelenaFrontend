@@ -1,0 +1,23 @@
+:host {
+  section {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    justify-content: start;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--lighter-grey);
+    width: 80vw;
+    position: relative;
+    border-radius: 3rem;
+
+    p {
+      font-weight: 600;
+    }
+
+    .more {
+      position: absolute;
+      right: 2rem;
+    }
+  }
+}

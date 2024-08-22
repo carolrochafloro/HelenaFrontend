@@ -1,0 +1,10 @@
+<app-header />
+<div class="container">
+  <h1>Seus remédios</h1>
+  @if (medslist() === null) {
+  <p>Você não tem nenhum remédio cadastrado.</p>
+  <button>Novo remédio</button>
+  } @else { @for (item of medslist(); track item.id) {
+  <div class="list"><app-med-list [med]="item" /></div>
+  } }
+</div>
