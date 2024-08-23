@@ -14,4 +14,10 @@ export class MedListComponent {
   @Input() med!: IMedication;
 
   FrequencyType = FrequencyType;
+
+  public isActive(start: Date, end: Date): boolean {
+    var today = new Date();
+
+    return start.getTime < today.getTime && end.getTime > today.getTime;
+  }
 }
