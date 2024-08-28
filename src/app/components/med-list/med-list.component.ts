@@ -17,7 +17,11 @@ export class MedListComponent {
 
   public isActive(start: Date, end: Date): boolean {
     var today = new Date();
+    var start = new Date(this.med.start);
+    var end = new Date(this.med.end);
 
-    return start.getTime < today.getTime && end.getTime > today.getTime;
+    return (
+      start.getTime() <= today.getTime() && end.getTime() >= today.getTime()
+    );
   }
 }
