@@ -1,23 +1,62 @@
 :host {
-  section {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    justify-content: start;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: var(--lighter-grey);
+  details {
     width: 80vw;
     position: relative;
-    border-radius: 3rem;
+    overflow: hidden;
 
-    p {
-      font-weight: 600;
+    summary,
+    article {
+      background-color: var(--lighter-grey);
+      border-radius: 6rem;
+      padding: 1rem 2rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      justify-content: start;
+      align-items: center;
     }
 
-    .more {
+    summary {
+      cursor: pointer;
+    }
+
+    article {
+      align-items: first baseline;
+    }
+
+    &[open] {
+      summary {
+        border-radius: 6rem 6rem 0 0;
+        .less {
+          display: none;
+        }
+      }
+
+      article {
+        border-radius: 0 0 6rem 6rem;
+      }
+    }
+
+    &:not([open]) {
+      summary {
+        .more {
+          display: none;
+        }
+      }
+    }
+
+    article {
+      background-color: var(--off-white);
+    }
+
+    .more,
+    .less {
       position: absolute;
       right: 2rem;
     }
+  }
+
+  ul {
+    padding: 0;
   }
 }

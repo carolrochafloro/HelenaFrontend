@@ -1,4 +1,5 @@
 import { FrequencyType } from './FrequencyType.enum';
+import { ITimes } from './ITimes';
 
 export interface IMedication {
   id: string;
@@ -7,7 +8,6 @@ export interface IMedication {
   type: string;
   dosage: string;
   notes: string;
-  img: string;
   start: Date;
   end: Date;
   frequencyType: FrequencyType;
@@ -15,4 +15,6 @@ export interface IMedication {
   doctorId: string;
   doctorName: string;
   doctorSpecialty: string;
+  indicatedFor: string;
+  times: ITimes[];
 }

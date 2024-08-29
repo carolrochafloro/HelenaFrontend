@@ -1,22 +1,47 @@
-<section>
-  <div>
-    <h2>{{ med.name }}</h2>
-  </div>
-  <div>
-    <p>Dosagem: {{ med.dosage }}</p>
-    <p>
-      Frequência: {{ med.recurrency }} por
-      {{ FrequencyType[med.frequencyType] }}
-    </p>
-  </div>
-  <div>
-    <p>
-      <span style="font-weight: 700">Prescrito por: </span><br />
-      {{ med.doctorName }}
-    </p>
-  </div>
-  <div>
-    <p>{{ isActive(med.start, med.end) ? "Ativo" : "Inativo" }}</p>
-  </div>
-  <div class="more"><img src="arrow-down.svg" alt="" /></div>
-</section>
+<details>
+  <summary>
+    <div>
+      <h2>{{ med.name }}</h2>
+    </div>
+    <div>
+      <p><strong>Indicação:</strong></p>
+      <p>{{ med.indicatedFor }}</p>
+    </div>
+    <div>
+      <p>
+        <span style="font-weight: 700">Prescrito por: </span><br />
+        {{ med.doctorName }}
+      </p>
+    </div>
+    <div>
+      <p>{{ isActive(med.start, med.end) ? "Ativo" : "Inativo" }}</p>
+    </div>
+    <div class="more"><img src="arrow-down.svg" alt="" /></div>
+    <div class="less"><img src="arrow-up.svg" alt="" /></div>
+  </summary>
+  <article>
+    <div>
+      <p><strong>Início:</strong> {{ med.start | date : "dd/MM/yyyy" }}</p>
+      <p><strong>Fim:</strong> {{ med.end | date : "dd/MM/yyyy" }}</p>
+    </div>
+    <div>
+      <p><strong>Dosagem:</strong> {{ med.dosage }}</p>
+      <p>
+        <strong>Frequência:</strong> {{ med.recurrency }} por
+        {{ FrequencyType[med.frequencyType] }}
+      </p>
+    </div>
+    <div>
+      <p><strong>Observações</strong></p>
+      <p>{{ med.notes }}</p>
+    </div>
+    <div>
+      <p><strong>Horários</strong></p>
+      <ul>
+        @for (item of med.times; track item.id) {
+        <li>{{ formatDate(item.dateTime) }}</li>
+        }
+      </ul>
+    </div>
+  </article>
+</details>
