@@ -1,17 +1,5 @@
 <section class="med-chip" aria-label="Medicamento">
-  <div class="med-data" aria-label="Dados do medicamento">
-    <h3>{{ med.medication.name }}</h3>
-    <p>Dosagem: {{ med.medication.dosage }}</p>
-  </div>
-
-  <div class="med-time" aria-label="Horário">
-    <p>{{ med.date | date : "shortTime" }}</p>
-  </div>
-
   <div class="med-check" aria-label="Notas e confirmação">
-    <p aria-label="Notas sobre o remédio">
-      {{ med.medication.notes }}
-    </p>
     <div>
       <input
         type="checkbox"
@@ -21,5 +9,15 @@
       />
       <label for="med-confirm-{{ med.id }}"></label>
     </div>
+  </div>
+
+  <div class="med-time" aria-label="Horário">
+    <p>{{ med.date | date : "shortTime" }}</p>
+  </div>
+
+  <div class="med-data" aria-label="Dados do medicamento">
+    <h3>{{ med.medication.name }}</h3>
+    <p class="dose-full">Dosagem: {{ med.medication.dosage }}</p>
+    <p class="dose-min">{{ med.medication.dosage }}</p>
   </div>
 </section>
