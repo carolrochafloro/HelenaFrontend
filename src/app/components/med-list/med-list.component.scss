@@ -14,6 +14,10 @@
       gap: 2rem;
       justify-content: start;
       align-items: center;
+
+      .responsive-info {
+        display: none;
+      }
     }
 
     summary {
@@ -28,6 +32,10 @@
       summary {
         border-radius: 6rem 6rem 0 0;
         .less {
+          display: inline;
+        }
+
+        .more {
           display: none;
         }
       }
@@ -40,6 +48,10 @@
     &:not([open]) {
       summary {
         .more {
+          display: inline;
+        }
+
+        .less {
           display: none;
         }
       }
@@ -58,5 +70,32 @@
 
   ul {
     padding: 0;
+  }
+
+  @media (max-width: 769px) {
+    details {
+      summary,
+      article {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+      }
+
+      article {
+        gap: 5px;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .indication,
+    .prescription,
+    .isActive {
+      display: none;
+    }
+
+    .responsive-info {
+      display: flex;
+    }
   }
 }

@@ -1,25 +1,40 @@
 <details>
   <summary>
-    <div>
+    <div class="name">
       <h2>{{ med.name }}</h2>
     </div>
-    <div>
+    <div class="indication">
       <p><strong>Indicação:</strong></p>
       <p>{{ med.indicatedFor }}</p>
     </div>
-    <div>
+    <div class="prescription">
       <p>
         <span style="font-weight: 700">Prescrito por: </span><br />
         {{ med.doctorName }}
       </p>
     </div>
-    <div>
+    <div class="isActive">
       <p>{{ isActive(med.start, med.end) ? "Ativo" : "Inativo" }}</p>
     </div>
     <div class="more"><img src="arrow-down.svg" alt="" /></div>
     <div class="less"><img src="arrow-up.svg" alt="" /></div>
   </summary>
   <article>
+    <div class="responsive-info">
+      <p>
+        <strong>
+          {{ isActive(med.start, med.end) ? "Ativo" : "Inativo" }}
+        </strong>
+      </p>
+    </div>
+    <div class="responsive-info">
+      <p><strong>Prescrito por:</strong></p>
+      <p>{{ med.doctorName }} - {{ med.doctorSpecialty }}</p>
+    </div>
+    <div class="responsive-info">
+      <p><strong>Indicação:</strong></p>
+      <p>{{ med.indicatedFor }}</p>
+    </div>
     <div>
       <p><strong>Início:</strong> {{ med.start | date : "dd/MM/yyyy" }}</p>
       <p><strong>Fim:</strong> {{ med.end | date : "dd/MM/yyyy" }}</p>
