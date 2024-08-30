@@ -1,9 +1,20 @@
 <header>
-  <nav aria-label="Navegação principal">
+  <button
+    type="button"
+    id="toggle-menu"
+    (click)="toggleMenu()"
+    aria-label="Menu icon"
+  >
+    <img src="menu.svg" alt="" />
+  </button>
+  <nav aria-label="Navegação principal" [ngClass]="{ show: isMenuVisible }">
     <ul>
       <li><a href="/remedios">Remédios</a></li>
       <li><a href="/medicos">Médicos</a></li>
-      <li class="profile"><a href="">Nome</a></li>
+      <div class="profile">
+        <li><a href="">Nome</a></li>
+        <img src="user.svg" alt="" />
+      </div>
     </ul>
   </nav>
 </header>

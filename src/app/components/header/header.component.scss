@@ -1,11 +1,21 @@
 :host {
   header {
     display: flex;
-    position: absolute;
-    height: 100px;
+    position: fixed;
+    height: 80px;
     width: 100%;
     align-items: center;
     background-color: var(--light-grey);
+    z-index: 1;
+
+    button {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin-left: 2rem;
+      padding: 0;
+    }
 
     nav {
       display: flex;
@@ -21,9 +31,60 @@
         }
 
         .profile {
+          display: flex;
+          flex-direction: row;
           position: absolute;
           margin: 0;
           right: 2rem;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 769px) {
+    header {
+      button {
+        display: inline;
+      }
+
+      nav {
+        display: none;
+      }
+
+      nav.show {
+        display: flex;
+        position: relative;
+
+        ul {
+          display: flex;
+          width: fit-content;
+          flex-direction: column;
+          justify-content: start;
+          align-items: start;
+          text-align: left;
+          position: absolute;
+          left: -4rem;
+          top: 1rem;
+          background-color: var(--light-grey);
+          height: fit-content;
+
+          border-radius: 0 0 1rem 0;
+
+          li {
+            margin: 0.5rem 1rem 1rem 0;
+          }
+
+          .profile {
+            position: static;
+            margin: 0;
+            right: auto;
+
+            img {
+              display: none;
+            }
+          }
         }
       }
     }
