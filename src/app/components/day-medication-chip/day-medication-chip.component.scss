@@ -12,6 +12,8 @@
     margin-right: auto;
 
     .med-data {
+      text-align: right;
+      margin-right: 1rem;
       h3 {
         font-size: 1.5rem;
       }
@@ -38,11 +40,14 @@
 
     .med-check {
       display: flex;
-      justify-content: end;
+      justify-content: start;
       align-items: center;
 
-      p {
-        margin-right: 1rem;
+      div .notes {
+        margin-left: 1rem;
+        p {
+          margin-left: 1rem;
+        }
       }
 
       input {
@@ -98,6 +103,7 @@
 
       .med-data {
         margin-left: 2rem;
+        text-align: left;
       }
     }
   }
@@ -121,6 +127,7 @@
 
       .med-data {
         margin: 0;
+        text-align: left;
         h3 {
           font-size: 1.2rem;
         }
@@ -138,7 +145,8 @@
         display: flex;
         justify-content: start;
         margin: 0;
-        label {
+        .notes {
+          display: none;
         }
       }
     }
