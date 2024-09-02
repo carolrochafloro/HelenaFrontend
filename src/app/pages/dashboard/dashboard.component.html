@@ -3,11 +3,9 @@
 <div class="container">
   <h1>Remédios do dia</h1>
 
-  <!-- <div><app-day-medication-chip /></div> -->
-
-  @if (medslist() === null) {
+  @if (medslist === null || medslist === []) {
   <p>Você não precisa tomar nenhum remédio hoje!</p>
-  } @else { @for (item of medslist(); track item.id) {
+  } @else { @for (item of medDayTimes(); track item.id) {
   <div class="meds">
     <app-day-medication-chip [med]="item"></app-day-medication-chip>
   </div>

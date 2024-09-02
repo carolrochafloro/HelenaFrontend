@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { IMedToday } from 'app/interfaces/meds/IMedToday';
+
+import { IMedDayTime } from 'app/interfaces/meds/IMedDayTime';
 
 @Component({
   selector: 'app-day-medication-chip',
@@ -11,5 +12,5 @@ import { IMedToday } from 'app/interfaces/meds/IMedToday';
   changeDetection: ChangeDetectionStrategy.Default,
 })
 export class DayMedicationChipComponent {
-  @Input() med!: IMedToday;
+  @Input() med!: IMedDayTime;
 }

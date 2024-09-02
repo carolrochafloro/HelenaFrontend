@@ -1,0 +1,27 @@
+:host {
+  .container {
+    margin-top: 80px;
+
+    button {
+      margin: 1rem 0;
+    }
+
+    h1 {
+      margin-bottom: 2rem;
+    }
+
+    table {
+      width: 50%;
+      text-align: left;
+      background-color: var(--off-white);
+
+      th {
+        color: black;
+      }
+
+      tr {
+        color: var(--dark-grey);
+      }
+    }
+  }
+}

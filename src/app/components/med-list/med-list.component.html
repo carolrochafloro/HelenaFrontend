@@ -1,5 +1,9 @@
 <details>
-  <summary>
+  <summary
+    aria-label="Medicamento"
+    aria-controls="medicamento-detalhes"
+    aria-expanded="false"
+  >
     <div class="name">
       <h2>{{ med.name }}</h2>
     </div>
@@ -16,17 +20,10 @@
     <div class="isActive">
       <p>{{ isActive(med.start, med.end) ? "Ativo" : "Inativo" }}</p>
     </div>
-    <div class="more"><img src="arrow-down.svg" alt="" /></div>
-    <div class="less"><img src="arrow-up.svg" alt="" /></div>
+    <div class="more"><img src="arrow-down.svg" alt="Expandir detalhes" /></div>
+    <div class="less"><img src="arrow-up.svg" alt="Recolher detalhes" /></div>
   </summary>
-  <article>
-    <div class="responsive-info">
-      <p>
-        <strong>
-          {{ isActive(med.start, med.end) ? "Ativo" : "Inativo" }}
-        </strong>
-      </p>
-    </div>
+  <article aria-label="Detalhes do medicamento">
     <div class="responsive-info">
       <p><strong>Prescrito por:</strong></p>
       <p>{{ med.doctorName }} - {{ med.doctorSpecialty }}</p>
@@ -38,6 +35,13 @@
     <div>
       <p><strong>Início:</strong> {{ med.start | date : "dd/MM/yyyy" }}</p>
       <p><strong>Fim:</strong> {{ med.end | date : "dd/MM/yyyy" }}</p>
+    </div>
+    <div class="responsive-info">
+      <p>
+        <strong>
+          {{ isActive(med.start, med.end) ? "Ativo" : "Inativo" }}
+        </strong>
+      </p>
     </div>
     <div>
       <p><strong>Dosagem:</strong> {{ med.dosage }}</p>
@@ -53,7 +57,7 @@
     <div>
       <p><strong>Horários</strong></p>
       <ul>
-        @for (item of med.times; track item.id) {
+        @for (item of med.times; track item.dateTime) {
         <li>{{ formatDate(item.dateTime) }}</li>
         }
       </ul>

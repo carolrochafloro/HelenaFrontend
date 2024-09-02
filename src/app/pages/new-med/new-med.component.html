@@ -2,16 +2,155 @@
 
 <div class="container">
   <h1>Novo remédio</h1>
+
   <form action="" method="post">
-    <label for="name">Nome do remédio</label>
-    <input type="text" />
+    <div class="form-div">
+      <div>
+        <div>
+          <label for="name">Nome do remédio</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            [(ngModel)]="newMedication.Name"
+            placeholder="Nome do remédio"
+          />
+        </div>
+        <div>
+          <label for="lab">Laboratório</label>
+          <input
+            type="text"
+            name="lab"
+            id="lab"
+            [(ngModel)]="newMedication.Lab"
+            placeholder="Laboratório"
+          />
+        </div>
 
-    <label for="dosage">Dosagem</label>
-    <input type="text" name="dosage" id="" />
+        <div>
+          <label for="doctor">Prescrito por:</label>
+          <select
+            name="doctor"
+            id="doctor"
+            [(ngModel)]="newMedication.DoctorId"
+            (change)="onDoctorChange($event)"
+            class="dropdown"
+          >
+            <option value="" disabled selected>Escolha um médico</option>
+            @for (doctor of docsList; track doctor.id) {
+            <option [value]="doctor.id">
+              {{ doctor.name }} - {{ doctor.specialty }}
+            </option>
+            }
+          </select>
+        </div>
+      </div>
 
-    <label for="doctor">Médico</label>
-    <!-- dropdown -->
+      <div>
+        <div>
+          <label for="dosage">Dosagem</label>
+          <input
+            type="text"
+            name="dosage"
+            id="dosage"
+            [(ngModel)]="newMedication.Dosage"
+            placeholder="Dosagem"
+          />
+        </div>
+        <div>
+          <label for="type">Tipo</label>
+          <select
+            name="type"
+            id="type"
+            class="dropdown"
+            [(ngModel)]="newMedication.Type"
+            (change)="onMedTypeChange($event)"
+            class="dropdown"
+          >
+            <option value="" disabled selected>Via de administração</option>
+            @for (item of medTypes; track item) {
+            <option [value]="item">{{ item }}</option>
+            }
+          </select>
+        </div>
+        <div>
+          <label for="indicatedFor">Indicação:</label>
+          <input
+            type="text"
+            name="indicatedFor"
+            placeholder="O que esse remédio trata?"
+            [(ngModel)]="newMedication.IndicatedFor"
+          />
+        </div>
+      </div>
+      <div class="dates">
+        <div>
+          <label class="label-show" for="start">Data de início:</label>
+          <input
+            type="date"
+            name="start"
+            id="start"
+            [(ngModel)]="newMedication.Start"
+          />
+        </div>
+        <div>
+          <label class="label-show" for="end">Data de fim:</label>
+          <input
+            type="date"
+            name="end"
+            id="end"
+            [(ngModel)]="newMedication.End"
+          />
+        </div>
+      </div>
 
-    <button type="submit">Criar</button>
+      <div>
+        <label class="label-show" for="frequency">Quantas vezes por: </label>
+        <select
+          name="frequency"
+          id="frequency"
+          [(ngModel)]="newMedication.FrequencyType"
+          (change)="onFrequencyTypeSelect($event)"
+        >
+          <option value="" disabled selected>Selecione a frequência</option>
+          @for (item of frequencyOptions; track item) {
+          <option [value]="item.value">
+            {{ item.label }}
+          </option>
+          }
+        </select>
+        <label for="recurrency"></label>
+        <input
+          type="number"
+          name="recurrency"
+          id="recurrency"
+          [(ngModel)]="newMedication.Recurrency"
+        />
+        <div>
+          <button class="times-btn" type="button" class="btn">
+            Adicionar horários
+          </button>
+        </div>
+      </div>
+      <div class="notes">
+        <label for="notes">Observações</label>
+        <textarea
+          name="notes"
+          id="notes"
+          rows="4"
+          cols="20"
+          [(ngModel)]="newMedication.Notes"
+          placeholder="Observações"
+        ></textarea>
+      </div>
+    </div>
+
+    <button type="submit" class="btn" (click)="submitMedication()">
+      Criar
+    </button>
   </form>
+</div>
+
+<div class="daily">
+  <h1>Escolha os horários</h1>
 </div>
