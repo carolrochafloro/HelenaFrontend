@@ -94,8 +94,17 @@
       display: none;
     }
 
-    .responsive-info {
+    article {
       display: flex;
+      flex-wrap: wrap;
+      flex-direction: row-reverse;
+      .responsive-info {
+        display: inline !important;
+      }
+
+      ul {
+        padding-bottom: 2rem;
+      }
     }
   }
 }

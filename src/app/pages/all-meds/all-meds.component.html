@@ -1,16 +1,23 @@
 <app-header />
 <div class="container">
   <h1>Seus remédios</h1>
+
   @if (medslist() === null) {
   <p>Você não tem nenhum remédio cadastrado.</p>
-  <button>Novo remédio</button>
+  <button class="btn" type="button" [routerLink]="['/newmed']">
+    Novo remédio
+  </button>
   } @else { @for (item of medslist(); track item.id) { @defer (on viewport) {
   <div class="list"><app-med-list [med]="item" /></div>
   } @placeholder {
-  <p>Esqueleto</p>
+  <p></p>
   } @loading {
   <p>Loading...</p>
   } @error {
   <p>Não foi possível carregar os dados.</p>
   } } }
+
+  <button class="btn" type="button" [routerLink]="['/newmed']">
+    Novo remédio
+  </button>
 </div>
