@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 import { INewTimeDTO } from './INewTimes';
 
+=======
+>>>>>>> a3c8a04e633a1b163c6b6da7f1959c26889cae8f
 export interface INewMedication {
   Name: string;
   Lab: string;
@@ -13,5 +16,8 @@ export interface INewMedication {
   Recurrency: number;
   DoctorId: string;
   IndicatedFor: string;
+<<<<<<< HEAD
   Times: INewTimeDTO[];
+=======
+>>>>>>> a3c8a04e633a1b163c6b6da7f1959c26889cae8f
 }

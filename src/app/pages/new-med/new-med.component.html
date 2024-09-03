@@ -67,7 +67,13 @@
             (change)="onMedTypeChange($event)"
             class="dropdown"
           >
+<<<<<<< HEAD
             <option value="" disabled selected>Via de administração</option>
+=======
+            <option value="" disabled selected>
+              Escolha a forma de aplicação
+            </option>
+>>>>>>> a3c8a04e633a1b163c6b6da7f1959c26889cae8f
             @for (item of medTypes; track item) {
             <option [value]="item">{{ item }}</option>
             }
@@ -126,11 +132,14 @@
           id="recurrency"
           [(ngModel)]="newMedication.Recurrency"
         />
+<<<<<<< HEAD
         <div>
           <button class="times-btn" type="button" class="btn">
             Adicionar horários
           </button>
         </div>
+=======
+>>>>>>> a3c8a04e633a1b163c6b6da7f1959c26889cae8f
       </div>
       <div class="notes">
         <label for="notes">Observações</label>
