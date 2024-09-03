@@ -12,6 +12,7 @@ import { HeaderComponent } from '@components/header/header.component';
 import { IMedByDay } from 'app/interfaces/meds/IMedByDay';
 import { IMedDayTime } from 'app/interfaces/meds/IMedDayTime';
 import { MedicationService } from 'app/services/medication.service';
+import { log } from 'console';
 
 @Component({
   selector: 'app-dashboard',
@@ -38,6 +39,7 @@ export class DashboardComponent implements OnInit {
 
         const medDayTime: IMedDayTime = {
           id: item.medicationId,
+          timeId: time.id,
           name: item.name,
           dosage: item.dosage,
           notes: item.notes,
@@ -50,6 +52,7 @@ export class DashboardComponent implements OnInit {
 
     this.medDayTimes.set(dayTimesArray);
     console.log(dayTimesArray);
+    console.log(this.medDayTimes());
   }
   ngOnInit(): void {
     const today = new Date();

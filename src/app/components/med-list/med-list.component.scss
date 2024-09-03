@@ -8,7 +8,7 @@
     article {
       background-color: var(--lighter-grey);
       border-radius: 6rem;
-      padding: 1rem 2rem;
+      padding: 2rem 2rem;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 2rem;
@@ -22,7 +22,6 @@
 
     summary {
       cursor: pointer;
-      padding: 2rem;
     }
 
     article {

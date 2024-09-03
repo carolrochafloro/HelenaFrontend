@@ -10,11 +10,13 @@
     width: 60vw;
     margin-left: auto;
     margin-right: auto;
+    align-items: center;
 
     .med-data {
       text-align: right;
       justify-self: flex-start;
       margin-right: 1rem;
+      text-align: left;
       h3 {
         font-size: 1.5rem;
       }
@@ -97,18 +99,20 @@
       display: flex;
       flex-wrap: wrap;
       flex-direction: row;
-      justify-content: start;
+      justify-content: space-between;
+      width: 100%;
+      position: relative;
 
       .med-check {
-        margin-right: 1rem;
         .notes {
           display: none;
         }
       }
 
       .med-data {
-        margin-left: 2rem;
+        width: fit-content;
         text-align: left;
+        justify-content: left;
       }
     }
   }
@@ -117,24 +121,27 @@
     .med-chip {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      justify-content: start;
+      justify-content: center;
       align-items: center;
-      gap: 0;
+      gap: 10px;
+      max-width: 80%;
 
       .med-time {
         margin: 0;
+        justify-self: center;
 
         p {
           font-size: 1rem;
-          text-align: left;
+          text-align: center;
         }
       }
 
       .med-data {
         margin: 0;
         text-align: left;
+
         h3 {
-          font-size: 1.2rem;
+          font-size: 1rem;
         }
 
         .dose-full {
