@@ -10,10 +10,6 @@ import { IDoctor } from 'app/interfaces/doctors/IDoctor';
 import { FrequencyType } from 'app/interfaces/meds/FrequencyType.enum';
 import { INewMedication } from 'app/interfaces/meds/INewMedication';
 import { MedicationService } from 'app/services/medication.service';
-<<<<<<< HEAD
-=======
-import { log } from 'console';
->>>>>>> a3c8a04e633a1b163c6b6da7f1959c26889cae8f
 
 @Component({
   selector: 'app-new-med',
@@ -52,18 +48,11 @@ export class NewMedComponent implements OnInit {
     Img: '',
     Start: '',
     End: '',
-<<<<<<< HEAD
     FrequencyType: 6,
     Recurrency: 0,
     DoctorId: '',
     IndicatedFor: '',
     Times: [],
-=======
-    FrequencyType: 0,
-    Recurrency: 0,
-    DoctorId: '',
-    IndicatedFor: '',
->>>>>>> a3c8a04e633a1b163c6b6da7f1959c26889cae8f
   };
 
   medTypes = [

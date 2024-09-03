@@ -1,6 +1,5 @@
 <section class="med-chip" aria-label="Medicamento">
   <div class="med-data" aria-label="Dados do medicamento">
-<<<<<<< HEAD
     <h3>{{ med.name }}</h3>
     <p class="dose-full">Dosagem: {{ med.dosage }}</p>
     <p class="dose-min">{{ med.dosage }}</p>
@@ -8,41 +7,21 @@
 
   <div class="med-time" aria-label="Horário">
     <p>{{ med.time | date : "shortTime" }}</p>
-=======
-    <h3>{{ med.medication.name }}</h3>
-    <p class="dose-full">Dosagem: {{ med.medication.dosage }}</p>
-    <p class="dose-min">{{ med.medication.dosage }}</p>
-  </div>
-
-  <div class="med-time" aria-label="Horário">
-    <p>{{ med.date | date : "shortTime" }}</p>
->>>>>>> a3c8a04e633a1b163c6b6da7f1959c26889cae8f
   </div>
 
   <div class="med-check" aria-label="Notas e confirmação">
     <div class="notes">
       <p><strong>Observações:</strong></p>
-<<<<<<< HEAD
       <p>{{ med.notes }}</p>
-=======
-      <p>{{ med.medication.notes }}</p>
->>>>>>> a3c8a04e633a1b163c6b6da7f1959c26889cae8f
     </div>
     <div class="input">
       <input
         type="checkbox"
         name="confirmado"
-<<<<<<< HEAD
         id="med-confirm-{{ med.name }}"
         aria-label="Confirmação"
       />
       <label for="med-confirm-{{ med.name }}"></label>
-=======
-        id="med-confirm-{{ med.id }}"
-        aria-label="Confirmação"
-      />
-      <label for="med-confirm-{{ med.id }}"></label>
->>>>>>> a3c8a04e633a1b163c6b6da7f1959c26889cae8f
     </div>
   </div>
 </section>
