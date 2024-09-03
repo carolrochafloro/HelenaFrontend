@@ -96,32 +96,26 @@
 
   @media (max-width: 769px) {
     .med-chip {
-      display: flex;
-      flex-wrap: wrap;
-      flex-direction: row;
-      justify-content: space-between;
-      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      justify-content: center;
+      width: 90%;
       position: relative;
+      padding: 2.5rem;
 
       .med-check {
         .notes {
           display: none;
         }
       }
-
-      .med-data {
-        width: fit-content;
-        text-align: left;
-        justify-content: left;
-      }
     }
   }
 
   @media (max-width: 480px) {
     .med-chip {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      justify-content: center;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
       align-items: center;
       gap: 10px;
       max-width: 80%;
@@ -129,6 +123,7 @@
       .med-time {
         margin: 0;
         justify-self: center;
+        order: 1;
 
         p {
           font-size: 1rem;
@@ -139,6 +134,7 @@
       .med-data {
         margin: 0;
         text-align: left;
+        order: 2;
 
         h3 {
           font-size: 1rem;
@@ -157,6 +153,7 @@
         display: flex;
         justify-content: start;
         margin: 0;
+        order: 0;
         .notes {
           display: none;
         }
