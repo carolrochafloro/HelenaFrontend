@@ -1,0 +1,121 @@
+@if (data.medication.FrequencyType === 0) {
+<div class="daily">
+  <h1 mat-dialog-title>Selecione os horários</h1>
+  <mat-dialog-content>
+    <!-- <form action=""> -->
+
+    @for (item of newTimes; track $index) {
+    <div>
+      <label for="">Horário</label>
+      <input
+        type="time"
+        name="time-{{ $index }}"
+        id="time-{{ $index }}"
+        [(ngModel)]="newTimes[$index]"
+        required
+      />
+    </div>
+    }
+    <mat-dialog-actions>
+      <button class="btn btn-small" (click)="saveTimes()">Salvar</button>
+    </mat-dialog-actions>
+
+    <!-- </form> -->
+  </mat-dialog-content>
+</div>
+
+} @else if (data.medication.FrequencyType === 1) {
+<div class="weekly">
+  <h1 mat-dialog-title>Selecione os dias e horários</h1>
+  <mat-dialog-content>
+    <div>
+      <label class="display-label" for="segunda">
+        <input
+          type="checkbox"
+          name=""
+          id=""
+          value="1"
+          (change)="onCheckBoxChange($event)"
+          [disabled]="isMaxSelected && !weekDays.includes(1)"
+        />Segunda</label
+      >
+    </div>
+    <div>
+      <label class="display-label" for="terça">
+        <input
+          type="checkbox"
+          name=""
+          id=""
+          value="2"
+          (change)="onCheckBoxChange($event)"
+          [disabled]="isMaxSelected && !weekDays.includes(2)"
+        />Terça</label
+      >
+    </div>
+    <div>
+      <label class="display-label" for="quarta">
+        <input
+          type="checkbox"
+          name=""
+          id=""
+          value="3"
+          (change)="onCheckBoxChange($event)"
+          [disabled]="isMaxSelected && !weekDays.includes(3)"
+        />Quarta</label
+      >
+    </div>
+    <div>
+      <label class="display-label" for="quinta">
+        <input
+          type="checkbox"
+          name=""
+          id=""
+          value="4"
+          (change)="onCheckBoxChange($event)"
+          [disabled]="isMaxSelected && !weekDays.includes(4)"
+        />Quinta</label
+      >
+    </div>
+    <div>
+      <label class="display-label" for="sexta">
+        <input
+          type="checkbox"
+          name=""
+          id=""
+          value="5"
+          (change)="onCheckBoxChange($event)"
+          [disabled]="isMaxSelected && !weekDays.includes(5)"
+        />Sexta</label
+      >
+    </div>
+    <div>
+      <label class="display-label" for="sabado">
+        <input
+          type="checkbox"
+          name=""
+          id=""
+          value="6"
+          (change)="onCheckBoxChange($event)"
+          [disabled]="isMaxSelected && !weekDays.includes(6)"
+        />Sábado</label
+      >
+    </div>
+    <div>
+      <label class="display-label" for="domingo">
+        <input
+          type="checkbox"
+          name=""
+          id=""
+          value="0"
+          (change)="onCheckBoxChange($event)"
+          [disabled]="isMaxSelected && !weekDays.includes(0)"
+        />Domingo</label
+      >
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button class="btn btn-small" (click)="saveWeeklyTimes()">Salvar</button>
+  </mat-dialog-actions>
+</div>
+
+}

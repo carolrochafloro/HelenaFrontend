@@ -127,7 +127,12 @@
           [(ngModel)]="newMedication.Recurrency"
         />
         <div>
-          <button class="times-btn" type="button" class="btn">
+          <button
+            class="times-btn"
+            type="button"
+            class="btn"
+            (click)="openDialog()"
+          >
             Adicionar horários
           </button>
         </div>

@@ -1,0 +1,44 @@
+:host {
+  .daily {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--off-white);
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+      color: var(--dark-grey);
+      background-color: var(--lighter-grey);
+      margin-bottom: 1rem;
+    }
+
+    label {
+      display: none;
+    }
+    div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      input {
+        padding: 1rem;
+        margin-bottom: 0.5rem;
+        border: none;
+        border-radius: 6px;
+      }
+    }
+  }
+
+  .weekly {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--off-white);
+    justify-content: start;
+    align-items: start;
+
+    h1,
+    label {
+      color: var(--dark-grey);
+    }
+  }
+}

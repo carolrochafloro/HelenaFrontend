@@ -3,12 +3,16 @@ import {
   Component,
   inject,
   OnInit,
+  signal,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { HeaderComponent } from '@components/header/header.component';
+import { NewTimeDialogComponent } from '@components/new-time-dialog/new-time-dialog.component';
 import { IDoctor } from 'app/interfaces/doctors/IDoctor';
 import { FrequencyType } from 'app/interfaces/meds/FrequencyType.enum';
 import { INewMedication } from 'app/interfaces/meds/INewMedication';
+
 import { MedicationService } from 'app/services/medication.service';
 
 @Component({
@@ -20,6 +24,8 @@ import { MedicationService } from 'app/services/medication.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NewMedComponent implements OnInit {
+  constructor(public dialog: MatDialog) {}
+
   #docService = inject(MedicationService);
   public docsList: IDoctor[] = [];
 
@@ -92,6 +98,16 @@ export class NewMedComponent implements OnInit {
   onFrequencyTypeSelect(event: Event) {
     const selectElement = event.target as HTMLSelectElement;
     this.newMedication.FrequencyType = parseInt(selectElement.value);
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(NewTimeDialogComponent, {
+      data: { medication: this.newMedication },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(this.newMedication.Times);
+    });
   }
 
   submitMedication() {

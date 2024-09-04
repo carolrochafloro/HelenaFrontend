@@ -1,4 +1,4 @@
-import { INewTimeDTO } from './INewTimes';
+import { INewTimeDTO } from './INewTimeDTO';
 
 export interface INewMedication {
   Name: string;

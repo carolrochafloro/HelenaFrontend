@@ -10,7 +10,6 @@ import { HeaderComponent } from '@components/header/header.component';
 import { MedListComponent } from '@components/med-list/med-list.component';
 import { IMedication } from 'app/interfaces/meds/IMedication';
 import { MedicationService } from 'app/services/medication.service';
-import { log } from 'console';
 
 @Component({
   selector: 'app-all-meds',
