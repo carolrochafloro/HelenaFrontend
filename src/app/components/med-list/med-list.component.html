@@ -54,13 +54,15 @@
       <p><strong>Observações</strong></p>
       <p>{{ med.notes }}</p>
     </div>
-    <!-- <div>
-      <p><strong>Horários</strong></p>
-      <ul>
+    <div>
+      <button class="btn" (click)="openDialog()">Ver horários</button>
+
+      <!-- <app-times-dialog [meds]="med" /> -->
+      <!-- <ul>
         @for (item of med.times; track item.dateTime) {
         <li>{{ formatDate(item.dateTime) }}</li>
         }
-      </ul>
-    </div> -->
+      </ul> -->
+    </div>
   </article>
 </details>

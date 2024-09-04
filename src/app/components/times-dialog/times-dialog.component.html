@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Horários</h1>
+<a href="#" (click)="closeDialog(); $event.preventDefault()"
+  ><img src="close.svg" alt="Fechar"
+/></a>
+<div mat-dialog-content>
+  <div>
+    @for (group of data.times; track $index) {
+    <h3>
+      {{ group.date | date : "fullDate" }}
+    </h3>
+    <ul>
+      @for (item of group.times; track $index) {
+      <li>
+        {{ item.dateTime | date : "shortTime" }}
+      </li>
+      }
+    </ul>
+    }
+  </div>
+</div>

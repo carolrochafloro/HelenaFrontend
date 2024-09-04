@@ -1,7 +1,6 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  computed,
   inject,
   OnInit,
   signal,
@@ -12,7 +11,6 @@ import { HeaderComponent } from '@components/header/header.component';
 import { IMedByDay } from 'app/interfaces/meds/IMedByDay';
 import { IMedDayTime } from 'app/interfaces/meds/IMedDayTime';
 import { MedicationService } from 'app/services/medication.service';
-import { log } from 'console';
 
 @Component({
   selector: 'app-dashboard',
@@ -29,14 +27,9 @@ export class DashboardComponent implements OnInit {
 
   private updateMedDayTimes() {
     const dayTimesArray: IMedDayTime[] = [];
-    console.log('medslist:', JSON.stringify(this.medslist, null, 2));
 
     this.medslist.forEach((item) => {
-      console.log(`Processando item: ${item.name}`);
-
       item.times.forEach((time) => {
-        console.log(`Processando time: ${time.dateTime.toString()}`);
-
         const medDayTime: IMedDayTime = {
           id: item.medicationId,
           timeId: time.id,
@@ -51,8 +44,6 @@ export class DashboardComponent implements OnInit {
     });
 
     this.medDayTimes.set(dayTimesArray);
-    console.log(dayTimesArray);
-    console.log(this.medDayTimes());
   }
   ngOnInit(): void {
     const today = new Date();

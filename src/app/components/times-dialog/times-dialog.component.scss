@@ -1,0 +1,24 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--off-white);
+  padding: 2rem;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  ul {
+    margin: 0;
+    padding: 0;
+
+    li {
+      margin-bottom: 5px;
+    }
+  }
+
+  a {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+  }
+}
