@@ -1,13 +1,14 @@
 :host {
   .container {
-    h1 {
-      margin-bottom: 1rem;
-    }
     margin-top: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    h1 {
+      margin-bottom: 1rem;
+    }
 
     h1 {
       margin-bottom: 1rem;

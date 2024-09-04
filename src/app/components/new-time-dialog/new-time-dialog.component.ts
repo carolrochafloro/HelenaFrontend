@@ -37,11 +37,24 @@ export class NewTimeDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<NewTimeDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { medication: INewMedication }
   ) {}
+  ngOnInit(): void {
+    // if (
+    //   this.data.medication.FrequencyType === 2 ||
+    //   this.data.medication.FrequencyType === 3
+    // ) {
+    // }
+  }
+  // ========= Variables =========
 
   newTimes = new Array(this.data.medication.Recurrency).fill(null);
   weekDays = new Array(0).fill(null);
   newDates = new Array(this.data.medication.Recurrency).fill(null);
+  newNumberOfTimes = new Array(0).fill(null);
   isMaxSelected: boolean = false;
+
+  numberOfTimes: number = 0;
+
+  // ========= DAILY =========
 
   saveTimes() {
     var index = 0;
@@ -52,6 +65,10 @@ export class NewTimeDialogComponent implements OnInit {
 
     this.dialogRef.close(this.data.medication.Times);
   }
+
+  // ========= WEEKLY =========
+
+  // --- Select weekdays
 
   onCheckBoxChange(event: Event) {
     const checkbox = event.target as HTMLInputElement;
@@ -75,20 +92,31 @@ export class NewTimeDialogComponent implements OnInit {
     }
   }
 
+  // --- Choose weekly times
+
+  chooseNumberOfTimes() {
+    this.newNumberOfTimes.length = this.numberOfTimes;
+  }
+
+  // --- Save data
+
   saveWeeklyTimes() {
     this.data.medication.Times.push({
       weekDay: this.weekDays,
       time: this.newTimes,
+      dates: [],
     });
     this.dialogRef.close(this.data.medication.Times);
   }
 
-  ngOnInit(): void {
-    // console.log(this.data.medication.FrequencyType);
-    // console.log(this.data.medication.Recurrency);
-    // if (this.data.medication.FrequencyType !== 0) {
-    //   this.newTimes = new Array(1).fill(null);
-    // }
+  // ========= MONTHLY / YEARLY =========
+  saveMonthlyYearlyTimes() {
+    this.data.medication.Times.push({
+      weekDay: [],
+      time: this.newTimes,
+      dates: this.newDates,
+    });
+    this.dialogRef.close(this.data.medication.Times);
   }
 }
 
