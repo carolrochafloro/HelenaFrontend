@@ -117,6 +117,7 @@ export class NewMedComponent implements OnInit {
       },
       error: (err) => {
         console.error('Não foi possível criar o remédio', err);
+        console.log(this.newMedication);
       },
     });
   }

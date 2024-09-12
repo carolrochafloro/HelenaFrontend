@@ -1,5 +1,5 @@
 export interface INewTimeDTO {
-  dates: string[];
   weekDay: number[];
+  dates: string[];
   time: string[];
 }
