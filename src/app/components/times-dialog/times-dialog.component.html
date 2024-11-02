@@ -1,12 +1,13 @@
 <h1 mat-dialog-title>Horários</h1>
-<a href="#" (click)="closeDialog(); $event.preventDefault()"
+<a href="#" (click)="closeDialog(); $event.preventDefault()" class="close"
   ><img src="close.svg" alt="Fechar"
 /></a>
 <div mat-dialog-content>
-  <div>
+  <div class="horarios">
     @for (group of data.times; track $index) {
+    <hr />
     <h3>
-      {{ group.date | date : "fullDate" }}
+      {{ group.date | date : "shortDate" }}
     </h3>
     <ul>
       @for (item of group.times; track $index) {
@@ -16,5 +17,6 @@
       }
     </ul>
     }
+    <hr />
   </div>
 </div>

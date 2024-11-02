@@ -5,7 +5,7 @@
     height: 80px;
     width: 100%;
     align-items: center;
-    background-color: var(--light-grey);
+    background-color: var(--primary-green);
     z-index: 1;
 
     button {
@@ -67,13 +67,15 @@
           position: absolute;
           left: -4rem;
           top: 1rem;
-          background-color: var(--light-grey);
+          background-color: var(--primary-green);
+          color: var((--white));
           height: fit-content;
 
           border-radius: 0 0 1rem 0;
 
           li {
             margin: 0.5rem 1rem 1rem 0;
+            padding-top: 1rem;
           }
 
           .profile {
