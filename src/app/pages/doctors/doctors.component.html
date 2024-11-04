@@ -18,9 +18,18 @@
       }
     </ng-container>
 
+    <ng-container matColumnDef="Contato">
+      <th mat-header-cell *matHeaderCellDef="">Contato</th>
+      @for (item of docsList; track item.id) {
+      <td mat-cell *matCellDef="let item">{{ item.contact }}</td>
+      }
+    </ng-container>
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
 
-  <button class="btn" type="button">Novo médico</button>
+  <button class="btn" type="button" [routerLink]="['/newdoctor']">
+    Novo médico
+  </button>
 </div>

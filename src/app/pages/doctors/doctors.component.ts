@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
+import { RouterLink } from '@angular/router';
 import { HeaderComponent } from '@components/header/header.component';
 import { IDoctor } from 'app/interfaces/doctors/IDoctor';
 import { MedicationService } from 'app/services/medication.service';
@@ -14,13 +15,13 @@ import { MedicationService } from 'app/services/medication.service';
 @Component({
   selector: 'app-doctors',
   standalone: true,
-  imports: [HeaderComponent, MatDialogModule, MatTableModule],
+  imports: [HeaderComponent, MatDialogModule, MatTableModule, RouterLink],
   templateUrl: './doctors.component.html',
   styleUrl: './doctors.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DoctorsComponent implements OnInit {
-  displayedColumns: string[] = ['Nome', 'Especialidade'];
+  displayedColumns: string[] = ['Nome', 'Especialidade', 'Contato'];
 
   #medService = inject(MedicationService);
   public docsList: IDoctor[] = [];

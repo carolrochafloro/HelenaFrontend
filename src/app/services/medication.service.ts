@@ -41,4 +41,13 @@ export class MedicationService {
       },
     });
   }
+
+  public newDoctor(doc: IDoctor): Observable<IDoctor> {
+    const endpoint = `${this.#url}/doctors`;
+    return this.#http.post<IDoctor>(endpoint, doc, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  }
 }

@@ -6,6 +6,7 @@
   justify-content: left;
   align-items: center;
   position: relative;
+  height: fit-content;
 
   h1 {
     margin-bottom: 1rem;
@@ -27,4 +28,10 @@
       margin-bottom: 5px;
     }
   }
+}
+.mat-dialog-content {
+  background-color: var(--lighter-grey) !important;
+  display: flex;
+  justify-content: left;
+  height: fit-content;
 }

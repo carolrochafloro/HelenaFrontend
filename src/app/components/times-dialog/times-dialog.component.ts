@@ -17,7 +17,9 @@ export class TimesDialogComponent {
     public dialogRef: MatDialogRef<TimesDialogComponent>,
     @Inject(MAT_DIALOG_DATA)
     public data: { times: { date: string; times: any[] }[] }
-  ) {}
+  ) {
+    this.dialogRef.disableClose = false;
+  }
 
   closeDialog() {
     this.dialogRef.close();
