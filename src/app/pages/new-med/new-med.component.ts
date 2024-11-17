@@ -14,6 +14,7 @@ import { FrequencyType } from 'app/interfaces/meds/FrequencyType.enum';
 import { INewMedication } from 'app/interfaces/meds/INewMedication';
 
 import { MedicationService } from 'app/services/medication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-med',
@@ -24,7 +25,7 @@ import { MedicationService } from 'app/services/medication.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NewMedComponent implements OnInit {
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private router: Router) {}
 
   #docService = inject(MedicationService);
   public docsList: IDoctor[] = [];
@@ -114,6 +115,7 @@ export class NewMedComponent implements OnInit {
     this.#docService.newMedication(this.newMedication).subscribe({
       next: (response) => {
         console.log('Remédio criado', response);
+        this.router.navigate(['/meds']);
       },
       error: (err) => {
         console.error('Não foi possível criar o remédio', err);
