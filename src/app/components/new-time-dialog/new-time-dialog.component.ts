@@ -8,26 +8,17 @@ import {
 import { FormsModule } from '@angular/forms';
 import {
   MAT_DIALOG_DATA,
-  MatDialog,
   MatDialogActions,
-  MatDialogClose,
   MatDialogContent,
   MatDialogRef,
-  MatDialogTitle,
 } from '@angular/material/dialog';
 import { INewMedication } from 'app/interfaces/meds/INewMedication';
+import { time } from 'node:console';
 
 @Component({
   selector: 'app-new-time-dialog',
   standalone: true,
-  imports: [
-    MatDialogTitle,
-    MatDialogContent,
-    MatDialogActions,
-    MatDialogClose,
-    CommonModule,
-    FormsModule,
-  ],
+  imports: [MatDialogContent, MatDialogActions, CommonModule, FormsModule],
   templateUrl: './new-time-dialog.component.html',
   styleUrl: './new-time-dialog.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -100,6 +91,7 @@ export class NewTimeDialogComponent implements OnInit {
       time: this.newTimes,
       dates: [],
     });
+
     this.dialogRef.close(this.data.medication.Times);
   }
 
