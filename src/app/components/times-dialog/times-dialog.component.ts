@@ -1,13 +1,17 @@
 import { CommonModule, DatePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import {
+  MatDialog,
+  MatDialogModule,
+  MatDialogRef,
+} from '@angular/material/dialog';
 import { Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-times-dialog',
   standalone: true,
-  imports: [CommonModule, DatePipe],
+  imports: [CommonModule, DatePipe, MatDialogModule],
   templateUrl: './times-dialog.component.html',
   styleUrl: './times-dialog.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
