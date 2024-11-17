@@ -13,7 +13,6 @@
             name="name"
             id="name"
             [(ngModel)]="newMedication.Name"
-            placeholder="Nome do remédio"
             oninvalid="alert('O nome do remédio é obrigatório.');"
             required
             minlength="2"
@@ -27,7 +26,6 @@
             name="lab"
             id="lab"
             [(ngModel)]="newMedication.Lab"
-            placeholder="Laboratório"
             maxlength="255"
           />
         </div>
@@ -60,7 +58,6 @@
             name="dosage"
             id="dosage"
             [(ngModel)]="newMedication.Dosage"
-            placeholder="Dosagem"
             required
             minlength="2"
             maxlength="255"
@@ -164,7 +161,6 @@
           rows="4"
           cols="20"
           [(ngModel)]="newMedication.Notes"
-          placeholder="Observações"
         ></textarea>
       </div>
     </div>
