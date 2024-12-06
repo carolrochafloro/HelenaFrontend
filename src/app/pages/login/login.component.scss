@@ -1,19 +1,4 @@
 :host {
-  input {
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    margin-right: 1rem;
-    margin-left: 1rem;
-    margin-bottom: 0.5rem;
-    border: none;
-    background-color: var(--white);
-    border-radius: 0.5rem;
-  }
-  button {
-    justify-self: center;
-    margin-top: 1rem;
-  }
-
   .presentation {
     text-align: center;
     color: var(--primary-green);
@@ -29,6 +14,21 @@
     margin: 3rem 6rem;
     border-radius: 2rem;
     align-items: start;
+
+    input {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      margin-right: 1rem;
+      margin-left: 1rem;
+      margin-bottom: 0.5rem;
+      border: none;
+      background-color: var(--white);
+      border-radius: 0.5rem;
+    }
+    button {
+      justify-self: center;
+      margin-top: 1rem;
+    }
 
     .register {
       display: flex;
@@ -80,6 +80,34 @@
         color: var(--primary-green);
         margin-top: 2rem;
         margin-bottom: 1rem;
+      }
+    }
+  }
+
+  @media (min-width: 1400px) {
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      .register,
+      .login {
+        display: grid;
+        justify-content: center;
+        input {
+          display: block;
+        }
+
+        .dateOfBirth {
+          justify-content: center;
+
+          label {
+            justify-self: center;
+          }
+
+          input {
+            justify-self: center;
+          }
+        }
       }
     }
   }
