@@ -9,13 +9,15 @@ import { IMedication } from 'app/interfaces/meds/IMedication';
 import { HeaderComponent } from '../../components/header/header.component';
 import { ITimes } from 'app/interfaces/meds/ITimes';
 import { MedicationService } from 'app/services/medication.service';
-import { SharedService } from 'app/services/shared-service.service';
+
 import { FrequencyType } from 'app/interfaces/meds/FrequencyType.enum';
+import { ActivatedRoute } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-med-details',
   standalone: true,
-  imports: [HeaderComponent],
+  imports: [HeaderComponent, DatePipe],
   templateUrl: './med-details.component.html',
   styleUrl: './med-details.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -23,12 +25,22 @@ import { FrequencyType } from 'app/interfaces/meds/FrequencyType.enum';
 export class MedDetailsComponent implements OnInit {
   med!: IMedication;
 
+  constructor(private route: ActivatedRoute) {}
+
   #medService = inject(MedicationService);
 
-  // receber id do medicamento via rota e usar um getbyid puxando da API
-
   ngOnInit(): void {
+    const medicationId = this.route.snapshot.paramMap.get('medicationId');
+    if (medicationId) {
+      this.getMedicationById(medicationId);
+    }
     this.groupByDate();
+  }
+
+  private getMedicationById(id: string): void {
+    this.#medService.getMedById(id).subscribe((medication) => {
+      this.med = medication;
+    });
   }
 
   medTimes: ITimes[] = [];

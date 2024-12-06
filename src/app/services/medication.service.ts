@@ -50,4 +50,10 @@ export class MedicationService {
       },
     });
   }
+
+  public getMedById(id: string): Observable<IMedication> {
+    const endpoint = `${this.#url}/medications/byid/${id}`;
+
+    return this.#http.get<IMedication>(endpoint);
+  }
 }

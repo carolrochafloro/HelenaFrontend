@@ -2,12 +2,29 @@
   .container {
     margin: 6rem 3rem;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: stretch;
     background-color: var(--white);
     width: 80vw;
     border-radius: 1rem;
+    padding: 2rem;
+    gap: 1.5rem;
+
+    .details {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: 1.5rem;
+
+      .notes {
+        width: 100%; /* Ocupa toda a largura */
+        margin-top: 1rem;
+        background-color: var(--light-grey);
+        padding: 1rem;
+        border-radius: 0.5rem;
+      }
+    }
   }
 }

@@ -1,18 +1,36 @@
-<app-header />
+<app-header></app-header>
 
 <div class="container">
   <div class="details">
-    <div class="name">
-      <h1>{{ med.name }}</h1>
-      <p>Prescrito por: {{ med.doctorName }}</p>
-      <p>Indicação: {{ med.indicatedFor }}</p>
+    <div class="others">
+      <div class="name">
+        <h1>Medicamento: {{ med.name }}</h1>
+        <p><strong>Prescrito por: </strong>{{ med.doctorName }}</p>
+        <p><strong>Indicação:</strong> {{ med.indicatedFor }}</p>
+      </div>
+      <div class="dosage">
+        <p><strong>Tipo:</strong> {{ med.dosage }}</p>
+        <p>
+          <strong>Dosagem: </strong>{{ med.recurrency }} por
+          {{ getFrequencyTypeLabel(med.frequencyType) }}
+        </p>
+      </div>
     </div>
-    <div class="dosage">
-      <p>Dosagem: {{ med.dosage }}</p>
-      <p>
-        Frequência: {{ med.recurrency }} por
-        {{ getFrequencyTypeLabel(med.frequencyType) }}
-      </p>
+
+    <div class="times">
+      <h2>Horários:</h2>
+      @if (medTimes === null || medTimes === []) {
+      <p>Não existem horários salvos para esse medicamento.</p>
+      } @else { @for (item of med.times; track item.id) {
+      <div class="time">
+        {{ item.dateTime | date : "dd/MM/yyyy - HH:mm" }}
+      </div>
+      } }
+    </div>
+
+    <div class="notes">
+      <p><strong>Observações:</strong></p>
+      <p>{{ med.notes }}</p>
     </div>
   </div>
 </div>

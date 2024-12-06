@@ -55,7 +55,7 @@
       <p>{{ med.notes }}</p>
     </div>
     <div>
-      <button class="btn" [routerLink]="['/details']">Ver horários</button>
+      <button class="btn" (click)="goToDetails()">Ver horários</button>
     </div>
   </article>
 </details>

@@ -3,20 +3,25 @@ import { Component, Input, signal } from '@angular/core';
 
 import { FrequencyType } from 'app/interfaces/meds/FrequencyType.enum';
 import { IMedication } from 'app/interfaces/meds/IMedication';
-import { Router, RouterLink } from '@angular/router';
-import { SharedService } from 'app/services/shared-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-med-list',
   standalone: true,
-  imports: [DatePipe, RouterLink],
+  imports: [DatePipe],
   templateUrl: './med-list.component.html',
   styleUrl: './med-list.component.scss',
 })
 export class MedListComponent {
   @Input() med!: IMedication;
 
+  constructor(private router: Router) {}
+
   FrequencyType = FrequencyType;
+
+  public goToDetails(): void {
+    this.router.navigate(['/details', this.med.id]);
+  }
 
   public isActive(start: Date, end: Date): boolean {
     var today = new Date();
