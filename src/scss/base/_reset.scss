@@ -8,6 +8,10 @@ body {
   display: flex;
   flex-direction: column;
   font-family: "Nunito", sans-serif;
+  background-image: url("../../../public/background.jpg");
+  background-size: cover; /* Ajusta a imagem para cobrir todo o contêiner */
+  background-position: center; /* Centraliza a imagem */
+  background-repeat: no-repeat; /* Evita que a imagem se repita */
 }
 
 html {
