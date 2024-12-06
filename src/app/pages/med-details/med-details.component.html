@@ -1,0 +1,18 @@
+<app-header />
+
+<div class="container">
+  <div class="details">
+    <div class="name">
+      <h1>{{ med.name }}</h1>
+      <p>Prescrito por: {{ med.doctorName }}</p>
+      <p>Indicação: {{ med.indicatedFor }}</p>
+    </div>
+    <div class="dosage">
+      <p>Dosagem: {{ med.dosage }}</p>
+      <p>
+        Frequência: {{ med.recurrency }} por
+        {{ getFrequencyTypeLabel(med.frequencyType) }}
+      </p>
+    </div>
+  </div>
+</div>

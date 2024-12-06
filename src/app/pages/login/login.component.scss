@@ -1,41 +1,85 @@
 :host {
+  input {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    margin-bottom: 0.5rem;
+    border: none;
+    background-color: var(--white);
+    border-radius: 0.5rem;
+  }
+  button {
+    justify-self: center;
+    margin-top: 1rem;
+  }
+
   .presentation {
     text-align: center;
     color: var(--primary-green);
     font-weight: bolder;
-    margin-top: 4rem;
+    margin-top: 3rem;
   }
   .container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
-    gap: 2rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     background-color: var(--lighter-grey);
-    margin: 4rem;
+    margin: 3rem 6rem;
     border-radius: 2rem;
+    align-items: start;
 
     .register {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
       background-color: var(--primary-green);
       text-align: center;
-      height: 50vh;
+      min-height: 80%;
       border-radius: 2rem;
+      flex: 1;
 
       h2 {
+        flex: 1;
         color: var(--white);
         margin-top: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      input {
+        flex: 1;
+      }
+
+      .dateOfBirth {
+        display: inline;
+        justify-content: center;
+
+        label {
+          display: block;
+          font-weight: bold;
+        }
+      }
+
+      button {
+        background-color: var(--lighter-grey);
+        color: var(--primary-green);
+        margin-bottom: 1rem;
       }
     }
 
     .login {
       background-color: var(--lighter-grey);
       text-align: center;
-      height: 50vh;
+      min-height: 80%;
       border-radius: 2rem;
+      justify-content: center;
+      flex: 1;
 
       h2 {
         color: var(--primary-green);
         margin-top: 2rem;
+        margin-bottom: 1rem;
       }
     }
   }
