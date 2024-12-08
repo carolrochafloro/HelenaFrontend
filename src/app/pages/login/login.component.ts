@@ -1,10 +1,17 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  OnInit,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { Router, RouterModule } from '@angular/router';
 import { MatInputModule } from '@angular/material/input';
 import { ILogin } from 'app/interfaces/users/ILogin';
 import { IRegister } from 'app/interfaces/users/IRegister';
+import { AuthService } from 'app/services/auth.service';
+import { response } from 'express';
 
 @Component({
   selector: 'app-login',
@@ -23,15 +30,33 @@ export class LoginComponent implements OnInit {
     password: '',
     dateOfBirth: '',
   };
-  constructor(private router: Router) {}
+
+  #authService = inject(AuthService);
+  #router = inject(Router);
 
   ngOnInit(): void {}
   onLogin() {
-    // validar
-    // redirecionar p/ dashboard
+    this.#authService.login(this.loginData).subscribe({
+      next: (response) => {
+        this.#router.navigate(['/dashboard']);
+      },
+      error: (err) => {
+        console.log(err);
+        alert('Falha ao realizar o login. Tente novamente!');
+      },
+    });
   }
 
   onRegister() {
-    // redirecionar p/ página própria
+    this.#authService.register(this.registerData).subscribe({
+      next: (response) => {
+        this.#router.navigate(['/dashboard']);
+      },
+      error: (err) => {
+        console.log(err);
+
+        alert('Falha ao cadastrar. Tente novamente!');
+      },
+    });
   }
 }

@@ -6,10 +6,10 @@
   <div class="register">
     <h2>Cadastre-se</h2>
     <div>
-      <form action="login" method="post" #form="ngForm" (ngSubmit)="onLogin()">
+      <form method="post" #form="ngForm" (ngSubmit)="onRegister()">
         <input
           required
-          type="name"
+          type="text"
           name="name"
           id="name"
           placeholder="Primeiro nome"
@@ -49,7 +49,7 @@
   <div class="login">
     <h2>Login</h2>
     <div>
-      <form action="login" method="post" (ngSubmit)="onLogin()">
+      <form method="post" (ngSubmit)="onLogin()">
         <input
           type="email"
           name="email"
