@@ -31,9 +31,6 @@ export class AllMedsComponent implements OnInit {
       error: (err) => {
         console.error('Erro ao buscar os dados', err);
       },
-      complete: () => {
-        console.log('Complete.');
-      },
     });
   }
 }

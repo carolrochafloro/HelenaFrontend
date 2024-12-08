@@ -59,9 +59,6 @@ export class DashboardComponent implements OnInit {
       error: (err) => {
         console.error('Erro ao buscar os dados', err);
       },
-      complete: () => {
-        console.log('Completo.');
-      },
     });
   }
 }

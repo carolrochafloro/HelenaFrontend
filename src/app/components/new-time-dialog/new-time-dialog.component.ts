@@ -59,7 +59,6 @@ export class NewTimeDialogComponent implements OnInit {
     const checkbox = event.target as HTMLInputElement;
     const value = parseInt(checkbox.value, 10);
 
-    console.log(value);
     if (checkbox.checked) {
       this.weekDays.push(value);
     } else {
