@@ -40,7 +40,8 @@ export class AuthService {
   }
 
   public getToken(): string | null {
-    return localStorage.getItem('jwt');
+    const token = localStorage.getItem('jwt');
+    return token;
   }
 
   public isAuthenticated(): boolean {

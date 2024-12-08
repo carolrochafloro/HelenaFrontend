@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
         this.#router.navigate(['/dashboard']);
       },
       error: (err) => {
-        console.log(err);
+        console.error(err);
         alert('Falha ao realizar o login. Tente novamente!');
       },
     });
@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
         this.#router.navigate(['/dashboard']);
       },
       error: (err) => {
-        console.log(err);
+        console.error(err);
 
         alert('Falha ao cadastrar. Tente novamente!');
       },

@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { AppUserService } from 'app/services/app-user.service';
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -10,6 +11,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 })
 export class HeaderComponent {
   isMenuVisible = false;
+
+  #userService = inject(AppUserService);
+
+  userName = this.#userService.getUserName();
 
   toggleMenu() {
     this.isMenuVisible = !this.isMenuVisible;

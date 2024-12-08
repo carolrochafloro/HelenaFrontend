@@ -2,17 +2,38 @@
 
 <div class="container">
   <h1>Novo médico</h1>
-  <div class="input">
-    <label for="name">Nome</label>
-    <input type="text" name="name" id="name" [ngModel]="" />
-  </div>
-  <div class="input">
-    <label for="specialty">Especialidade</label>
-    <input type="text" name="specialty" id="specialty" />
-  </div>
-  <div class="input">
-    <label for="contact">Contato</label>
-    <input type="text" name="contact" id="contact" />
-  </div>
-  <button type="submit" class="btn">Salvar</button>
+
+  <form method="post" (ngSubmit)="onSubmit()">
+    <div class="input">
+      <label for="name">Nome</label>
+      <input
+        type="text"
+        name="name"
+        id="name"
+        [(ngModel)]="doctorData.name"
+        required
+      />
+    </div>
+    <div class="input">
+      <label for="specialty">Especialidade</label>
+      <input
+        type="text"
+        name="specialty"
+        id="specialty"
+        [(ngModel)]="doctorData.specialty"
+        required
+      />
+    </div>
+    <div class="input">
+      <label for="contact">Contato</label>
+      <input
+        type="text"
+        name="contact"
+        id="contact"
+        [(ngModel)]="doctorData.contact"
+        required
+      />
+    </div>
+    <button type="submit" class="btn">Salvar</button>
+  </form>
 </div>

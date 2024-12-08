@@ -15,6 +15,7 @@ import { INewMedication } from 'app/interfaces/meds/INewMedication';
 
 import { MedicationService } from 'app/services/medication.service';
 import { Router } from '@angular/router';
+import { DoctorService } from 'app/services/doctor.service';
 
 @Component({
   selector: 'app-new-med',
@@ -27,7 +28,8 @@ import { Router } from '@angular/router';
 export class NewMedComponent implements OnInit {
   constructor(public dialog: MatDialog, private router: Router) {}
 
-  #docService = inject(MedicationService);
+  #docService = inject(DoctorService);
+  #medService = inject(MedicationService);
   public docsList: IDoctor[] = [];
 
   ngOnInit(): void {
@@ -39,9 +41,6 @@ export class NewMedComponent implements OnInit {
       },
       error: (err) => {
         console.error('Erro ao buscar os dados', err);
-      },
-      complete: () => {
-        console.log('Lista de médicos obtida.');
       },
     });
   }
@@ -106,20 +105,16 @@ export class NewMedComponent implements OnInit {
       data: { medication: this.newMedication },
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(this.newMedication.Times);
-    });
+    dialogRef.afterClosed().subscribe((result) => {});
   }
 
   submitMedication() {
-    this.#docService.newMedication(this.newMedication).subscribe({
+    this.#medService.newMedication(this.newMedication).subscribe({
       next: (response) => {
-        console.log('Remédio criado', response);
         this.router.navigate(['/meds']);
       },
       error: (err) => {
         console.error('Não foi possível criar o remédio', err);
-        console.log(this.newMedication);
       },
     });
   }

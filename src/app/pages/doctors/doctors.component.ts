@@ -3,14 +3,13 @@ import {
   Component,
   inject,
   OnInit,
-  signal,
 } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
 import { HeaderComponent } from '@components/header/header.component';
 import { IDoctor } from 'app/interfaces/doctors/IDoctor';
-import { MedicationService } from 'app/services/medication.service';
+import { DoctorService } from 'app/services/doctor.service';
 
 @Component({
   selector: 'app-doctors',
@@ -23,22 +22,18 @@ import { MedicationService } from 'app/services/medication.service';
 export class DoctorsComponent implements OnInit {
   displayedColumns: string[] = ['Nome', 'Especialidade', 'Contato'];
 
-  #medService = inject(MedicationService);
+  #docService = inject(DoctorService);
   public docsList: IDoctor[] = [];
 
   ngOnInit(): void {
-    this.#medService.getDoctors().subscribe({
+    this.#docService.getDoctors().subscribe({
       next: (data: IDoctor[]) => {
-        data.forEach((doctor) => {
-          this.docsList.push(doctor);
-        });
+        this.docsList = data;
       },
       error: (err) => {
         console.error('Erro ao buscar os dados', err);
       },
-      complete: () => {
-        console.log('Lista de médicos obtida.');
-      },
+      complete: () => {},
     });
   }
 }

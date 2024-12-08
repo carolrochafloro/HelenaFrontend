@@ -3,4 +3,5 @@ export interface IDoctor {
   name: string;
   specialty: string;
   contact: string;
+  userId: string;
 }

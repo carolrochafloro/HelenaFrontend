@@ -6,7 +6,10 @@ import {
 } from '@angular/core';
 import { HeaderComponent } from '../../components/header/header.component';
 import { FormsModule } from '@angular/forms';
-import { MedicationService } from 'app/services/medication.service';
+import { Router } from '@angular/router';
+import { DoctorService } from 'app/services/doctor.service';
+import { INewDoctor } from 'app/interfaces/doctors/INewDoctor';
+import { AppUserService } from 'app/services/app-user.service';
 
 @Component({
   selector: 'app-new-doctor',
@@ -17,9 +20,30 @@ import { MedicationService } from 'app/services/medication.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NewDoctorComponent implements OnInit {
-  constructor() {}
+  #docService = inject(DoctorService);
+  #router = inject(Router);
+  #userService = inject(AppUserService);
 
-  #docService = inject(MedicationService);
+  newUserId = this.#userService.getUserId();
+
+  doctorData: INewDoctor = {
+    name: '',
+    specialty: '',
+    contact: '',
+    userId: this.newUserId,
+  };
+
+  onSubmit() {
+    this.#docService.newDoctor(this.doctorData).subscribe({
+      next: () => {
+        this.#router.navigate(['/doctors']);
+      },
+      error: (err) => {
+        console.error(err);
+        alert('Erro ao cadastrar médico. Tente novamente!');
+      },
+    });
+  }
 
   ngOnInit(): void {}
 }

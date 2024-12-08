@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable, signal, Type } from '@angular/core';
 import { IDoctor } from 'app/interfaces/doctors/IDoctor';
+import { INewDoctor } from 'app/interfaces/doctors/INewDoctor';
 import { IMedByDay } from 'app/interfaces/meds/IMedByDay';
 import { IMedication } from 'app/interfaces/meds/IMedication';
 import { INewMedication } from 'app/interfaces/meds/INewMedication';
@@ -17,7 +18,7 @@ export class MedicationService {
   public getMedsListByDay = this.#medsList.asReadonly();
 
   public getAllMeds(): Observable<IMedication[]> {
-    const endpoint = `${this.#url}/medications`;
+    const endpoint = `${this.#url}/api/medications`;
 
     return this.#http.get<IMedication[]>(endpoint);
   }
@@ -28,23 +29,9 @@ export class MedicationService {
     return this.#http.get<IMedByDay[]>(endpoint);
   }
 
-  public getDoctors(): Observable<IDoctor[]> {
-    const endpoint = `${this.#url}/doctors`;
-    return this.#http.get<IDoctor[]>(endpoint);
-  }
-
   public newMedication(med: INewMedication): Observable<INewMedication> {
     const endpoint = `${this.#url}/medications`;
     return this.#http.post<INewMedication>(endpoint, med, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-  }
-
-  public newDoctor(doc: IDoctor): Observable<IDoctor> {
-    const endpoint = `${this.#url}/doctors`;
-    return this.#http.post<IDoctor>(endpoint, doc, {
       headers: {
         'Content-Type': 'application/json',
       },
