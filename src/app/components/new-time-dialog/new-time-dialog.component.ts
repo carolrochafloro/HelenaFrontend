@@ -13,7 +13,6 @@ import {
   MatDialogRef,
 } from '@angular/material/dialog';
 import { INewMedication } from 'app/interfaces/meds/INewMedication';
-import { time } from 'node:console';
 
 @Component({
   selector: 'app-new-time-dialog',
@@ -29,6 +28,7 @@ export class NewTimeDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: { medication: INewMedication }
   ) {}
   ngOnInit(): void {}
+
   // ========= Variables =========
 
   newTimes = new Array(this.data.medication.Recurrency).fill(null);
@@ -95,6 +95,7 @@ export class NewTimeDialogComponent implements OnInit {
   }
 
   // ========= MONTHLY / YEARLY =========
+
   saveMonthlyYearlyTimes() {
     this.data.medication.Times.push({
       weekDay: [],
@@ -104,14 +105,3 @@ export class NewTimeDialogComponent implements OnInit {
     this.dialogRef.close(this.data.medication.Times);
   }
 }
-
-// daily: criar um array de times com length = recurrency, iterar sobre esse array pra exibir timepickers,
-// chamar função que itera passando cada item desse array para um índice de times
-
-//weekly: criar um array de weekdays (0 a 6), exibir dia da semana para escolher e inserir no array de weekdays,
-//criar um array de times com 1 posição, exibir um timepicker e botão + horário, push no array de horários
-
-//monthly/anual: criar um array de datas com length = recurrency, iterar p/ exibir datepickers,
-// push no array de datas. criar um array de times, exibir um timepicker e botão + p/ add e push
-
-// no final, passar pro array de times

@@ -17,7 +17,7 @@ import { DoctorService } from 'app/services/doctor.service';
   imports: [HeaderComponent, MatDialogModule, MatTableModule, RouterLink],
   templateUrl: './doctors.component.html',
   styleUrl: './doctors.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.Default,
 })
 export class DoctorsComponent implements OnInit {
   displayedColumns: string[] = ['Nome', 'Especialidade', 'Contato'];
@@ -33,7 +33,6 @@ export class DoctorsComponent implements OnInit {
       error: (err) => {
         console.error('Erro ao buscar os dados', err);
       },
-      complete: () => {},
     });
   }
 }

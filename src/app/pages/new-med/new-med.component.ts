@@ -58,6 +58,7 @@ export class NewMedComponent implements OnInit {
     Recurrency: 0,
     DoctorId: '',
     IndicatedFor: '',
+    UserId: '',
     Times: [],
   };
 
@@ -110,11 +111,12 @@ export class NewMedComponent implements OnInit {
 
   submitMedication() {
     this.#medService.newMedication(this.newMedication).subscribe({
-      next: (response) => {
+      next: () => {
         this.router.navigate(['/meds']);
       },
       error: (err) => {
-        console.error('Não foi possível criar o remédio', err);
+        console.error('Não foi possível cadastrar o remédio', err);
+        alert('Não foi possível cadastrar o medicamento.');
       },
     });
   }

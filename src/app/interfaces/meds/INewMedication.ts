@@ -13,5 +13,6 @@ export interface INewMedication {
   Recurrency: number;
   DoctorId: string;
   IndicatedFor: string;
+  UserId: string | null;
   Times: INewTimeDTO[];
 }

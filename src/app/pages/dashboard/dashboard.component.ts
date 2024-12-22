@@ -51,9 +51,7 @@ export class DashboardComponent implements OnInit {
 
     this.#medService.getListbyDate(formattedDate).subscribe({
       next: (data) => {
-        data.forEach((item) => {
-          this.medslist.push(item);
-        });
+        this.medslist = data;
         this.updateMedDayTimes();
       },
       error: (err) => {

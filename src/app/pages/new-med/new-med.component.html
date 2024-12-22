@@ -99,8 +99,6 @@
             id="start"
             [(ngModel)]="newMedication.Start"
             required
-            min="2023-01-01"
-            max="2026-12-30"
           />
         </div>
         <div>
@@ -110,8 +108,7 @@
             name="end"
             id="end"
             [(ngModel)]="newMedication.End"
-            min="{{ newMedication.Start + 1 }}"
-            max="2026-12-31"
+            required
           />
         </div>
       </div>

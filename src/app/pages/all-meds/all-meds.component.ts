@@ -17,7 +17,7 @@ import { MedicationService } from 'app/services/medication.service';
   imports: [HeaderComponent, MedListComponent, RouterLink],
   templateUrl: './all-meds.component.html',
   styleUrl: './all-meds.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.Default,
 })
 export class AllMedsComponent implements OnInit {
   #medService = inject(MedicationService);
