@@ -1,7 +1,11 @@
 <app-header />
 
 <div class="container">
-  <h1>Novo remédio</h1>
+  <h1>{{ isEditMode ? "Editar remédio" : "Novo remédio" }}</h1>
+
+  @if (isEditMode) {
+  <p>Para editar horários é preciso deletar o medicamento e criar um novo.</p>
+  }
 
   <form action="" method="post" #form="ngForm" (ngSubmit)="submitMedication()">
     <div class="form-div">
@@ -90,6 +94,8 @@
           />
         </div>
       </div>
+
+      @if (!isEditMode) {
       <div class="dates">
         <div>
           <label class="label-show" for="start">Data de início:</label>
@@ -150,6 +156,8 @@
           </button>
         </div>
       </div>
+      }
+
       <div class="notes">
         <label for="notes">Observações</label>
         <textarea

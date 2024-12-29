@@ -3,7 +3,7 @@
 <div class="container">
   <h1>Seus remédios</h1>
 
-  @if (medslist() === null) {
+  @if (medslist() === null || medslist()?.length === 0) {
   <p>Você não tem nenhum remédio cadastrado.</p>
   <button class="btn" type="button" [routerLink]="['/newmed']">
     Novo remédio

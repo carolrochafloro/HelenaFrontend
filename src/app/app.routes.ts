@@ -36,4 +36,8 @@ export const routes: Routes = [
     path: 'details/:medicationId',
     component: MedDetailsComponent,
   },
+  {
+    path: 'meds/edit/:id',
+    component: NewMedComponent,
+  },
 ];

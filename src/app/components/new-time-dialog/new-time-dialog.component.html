@@ -1,4 +1,4 @@
-@if (data.medication.FrequencyType === 0) {
+@if (data.medication.FrequencyType === 1) {
 <div class="daily">
   <h1 mat-dialog-title>Selecione os horários</h1>
   <mat-dialog-content>
@@ -20,7 +20,7 @@
   </mat-dialog-content>
 </div>
 
-} @else if (data.medication.FrequencyType === 1) {
+} @else if (data.medication.FrequencyType === 2) {
 <div class="weekly">
   <h1 mat-dialog-title>Selecione os dias e horários</h1>
   <mat-dialog-content>
@@ -145,8 +145,8 @@
   </mat-dialog-actions>
 </div>
 
-} @else if (data.medication.FrequencyType === 2 || data.medication.FrequencyType
-=== 3) {
+} @else if (data.medication.FrequencyType === 3 || data.medication.FrequencyType
+=== 4) {
 <div class="monthly-yearly">
   <h1 mat-dialog-title>Escolha seus dias e horários</h1>
   <mat-dialog-content>

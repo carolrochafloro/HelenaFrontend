@@ -20,7 +20,7 @@ import { DatePipe } from '@angular/common';
   imports: [HeaderComponent, DatePipe],
   templateUrl: './med-details.component.html',
   styleUrl: './med-details.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.Default,
 })
 export class MedDetailsComponent implements OnInit {
   med!: IMedication;

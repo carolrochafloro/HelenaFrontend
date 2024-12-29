@@ -8,6 +8,7 @@ import { INewMedication } from 'app/interfaces/meds/INewMedication';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { AppUserService } from './app-user.service';
+import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 
 @Injectable({
   providedIn: 'root',
@@ -70,8 +71,38 @@ export class MedicationService {
   }
 
   public getMedById(id: string): Observable<IMedication> {
-    const endpoint = `${this.#url}/medications/byid/${id}`;
+    const token = this.#authService.getToken();
+    let headers = new HttpHeaders();
+    if (token) {
+      headers = headers.set('Authorization', `Bearer ${token}`);
+    }
+    const endpoint = `${this.#url}/api/Medication/get/${id}`;
 
-    return this.#http.get<IMedication>(endpoint);
+    return this.#http.get<IMedication>(endpoint, { headers });
+  }
+
+  public deleteMed(id: string): Observable<void> {
+    const token = this.#authService.getToken();
+    let headers = new HttpHeaders();
+
+    if (token) {
+      headers = headers.set('Authorization', `Bearer ${token}`);
+    }
+    const endpoint = `${this.#url}/api/Medication/delete/${id}`;
+
+    return this.#http.delete<void>(endpoint, { headers });
+  }
+
+  public updateMed(med: IMedication): Observable<IMedication> {
+    const endpoint = `${this.#url}/api/Medication/update/${med.id}`;
+    const token = this.#authService.getToken();
+
+    let headers = new HttpHeaders();
+
+    if (token) {
+      headers = headers.set('Authorization', `Bearer ${token}`);
+    }
+
+    return this.#http.put<IMedication>(endpoint, med, { headers });
   }
 }

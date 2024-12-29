@@ -3,19 +3,18 @@ import {
   Component,
   inject,
   OnInit,
-  signal,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HeaderComponent } from '@components/header/header.component';
 import { NewTimeDialogComponent } from '@components/new-time-dialog/new-time-dialog.component';
 import { IDoctor } from 'app/interfaces/doctors/IDoctor';
 import { FrequencyType } from 'app/interfaces/meds/FrequencyType.enum';
 import { INewMedication } from 'app/interfaces/meds/INewMedication';
-
 import { MedicationService } from 'app/services/medication.service';
-import { Router } from '@angular/router';
 import { DoctorService } from 'app/services/doctor.service';
+import { IMedication } from 'app/interfaces/meds/IMedication';
 
 @Component({
   selector: 'app-new-med',
@@ -23,25 +22,37 @@ import { DoctorService } from 'app/services/doctor.service';
   imports: [HeaderComponent, FormsModule],
   templateUrl: './new-med.component.html',
   styleUrl: './new-med.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NewMedComponent implements OnInit {
-  constructor(public dialog: MatDialog, private router: Router) {}
+  constructor(
+    public dialog: MatDialog,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   #docService = inject(DoctorService);
   #medService = inject(MedicationService);
+  isEditMode = false;
+  medicationId?: string | null; // Permitir null ou undefined
+
   public docsList: IDoctor[] = [];
 
   ngOnInit(): void {
     this.#docService.getDoctors().subscribe({
       next: (data: IDoctor[]) => {
-        data.forEach((doctor) => {
-          this.docsList.push(doctor);
-        });
+        this.docsList = data;
       },
       error: (err) => {
         console.error('Erro ao buscar os dados', err);
       },
+    });
+
+    this.route.paramMap.subscribe((params) => {
+      this.medicationId = params.get('id');
+      if (this.medicationId) {
+        this.isEditMode = true;
+        this.loadMedication();
+      }
     });
   }
 
@@ -51,15 +62,33 @@ export class NewMedComponent implements OnInit {
     Type: '',
     Dosage: '',
     Notes: '',
-    Img: '',
     Start: '',
     End: '',
-    FrequencyType: 6,
+    Img: '',
+    FrequencyType: FrequencyType.dia,
     Recurrency: 0,
     DoctorId: '',
     IndicatedFor: '',
     UserId: '',
     Times: [],
+  };
+
+  medication: IMedication = {
+    id: '',
+    name: '',
+    lab: '',
+    type: '',
+    dosage: '',
+    notes: '',
+    start: new Date(),
+    end: new Date(),
+    frequencyType: FrequencyType.dia,
+    recurrency: 0,
+    doctorId: '',
+    doctorName: '',
+    doctorSpecialty: '',
+    indicatedFor: '',
+    times: [],
   };
 
   medTypes = [
@@ -88,36 +117,109 @@ export class NewMedComponent implements OnInit {
 
   onDoctorChange(event: Event) {
     const selectElement = event.target as HTMLSelectElement;
-    this.newMedication.DoctorId = selectElement.value;
+    if (this.isEditMode) {
+      this.medication.doctorId = selectElement.value;
+    } else {
+      this.newMedication.DoctorId = selectElement.value;
+    }
   }
 
   onMedTypeChange(event: Event) {
     const selectElement = event.target as HTMLSelectElement;
-    this.newMedication.Type = selectElement.value;
+    if (this.isEditMode) {
+      this.medication.type = selectElement.value;
+    } else {
+      this.newMedication.Type = selectElement.value;
+    }
   }
 
   onFrequencyTypeSelect(event: Event) {
     const selectElement = event.target as HTMLSelectElement;
-    this.newMedication.FrequencyType = parseInt(selectElement.value);
+    if (this.isEditMode) {
+      this.medication.frequencyType = parseInt(selectElement.value);
+    } else {
+      this.newMedication.FrequencyType = parseInt(selectElement.value);
+    }
   }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(NewTimeDialogComponent, {
-      data: { medication: this.newMedication },
+      data: {
+        medication: this.isEditMode ? this.medication : this.newMedication,
+      },
     });
 
     dialogRef.afterClosed().subscribe((result) => {});
   }
 
-  submitMedication() {
-    this.#medService.newMedication(this.newMedication).subscribe({
-      next: () => {
-        this.router.navigate(['/meds']);
+  loadMedication(): void {
+    this.#medService.getMedById(this.medicationId!).subscribe({
+      next: (medication) => {
+        this.medication = medication;
+        if (this.isEditMode) {
+          // Preencher o formulário com os dados do medicamento
+          this.newMedication = {
+            Name: medication.name,
+            Lab: medication.lab,
+            Type: medication.type,
+            Dosage: medication.dosage,
+            Notes: medication.notes,
+            DoctorId: medication.doctorId,
+            IndicatedFor: medication.indicatedFor,
+            Img: '',
+            Start: '',
+            End: '',
+            FrequencyType: 0,
+            Recurrency: 0,
+            UserId: '',
+            Times: [],
+          };
+        }
       },
       error: (err) => {
-        console.error('Não foi possível cadastrar o remédio', err);
-        alert('Não foi possível cadastrar o medicamento.');
+        console.error('Erro ao carregar medicamento', err);
       },
     });
+  }
+
+  submitMedication() {
+    if (this.isEditMode) {
+      this.medication = {
+        id: this.medication.id,
+        name: this.newMedication.Name,
+        lab: this.newMedication.Lab,
+        type: this.newMedication.Type,
+        dosage: this.newMedication.Dosage,
+        notes: this.newMedication.Notes,
+        start: this.medication.start,
+        end: this.medication.end,
+        frequencyType: this.medication.frequencyType,
+        recurrency: this.medication.recurrency,
+        doctorId: this.newMedication.DoctorId,
+        doctorName: this.medication.doctorName,
+        doctorSpecialty: this.medication.doctorSpecialty,
+        indicatedFor: this.newMedication.IndicatedFor,
+        times: this.medication.times,
+      };
+      this.#medService.updateMed(this.medication).subscribe({
+        next: () => {
+          this.router.navigate(['/meds']);
+        },
+        error: (err) => {
+          console.error('Não foi possível atualizar o remédio', err);
+          alert('Não foi possível atualizar o medicamento.');
+        },
+      });
+    } else {
+      this.#medService.newMedication(this.newMedication).subscribe({
+        next: () => {
+          this.router.navigate(['/meds']);
+        },
+        error: (err) => {
+          console.error('Não foi possível cadastrar o remédio', err);
+          alert('Não foi possível cadastrar o medicamento.');
+        },
+      });
+    }
   }
 }

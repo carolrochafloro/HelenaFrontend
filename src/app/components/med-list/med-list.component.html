@@ -20,6 +20,7 @@
     <div class="isActive">
       <p>{{ isActive(med.start, med.end) ? "Ativo" : "Inativo" }}</p>
     </div>
+
     <div class="more"><img src="arrow-down.svg" alt="Expandir detalhes" /></div>
     <div class="less"><img src="arrow-up.svg" alt="Recolher detalhes" /></div>
   </summary>
@@ -50,12 +51,22 @@
         {{ FrequencyType[med.frequencyType] }}
       </p>
     </div>
-    <div>
+
+    <div class="notes">
       <p><strong>Observações</strong></p>
       <p>{{ med.notes }}</p>
     </div>
-    <div>
+
+    <div class="actions">
       <button class="btn" (click)="goToDetails()">Ver horários</button>
+      <div class="icons">
+        <button type="button" class="delete-btn" (click)="editMed()">
+          <img src="edit.svg" alt="Editar medicamento" />
+        </button>
+        <button type="button" class="delete-btn" (click)="deleteMed()">
+          <img src="delete.svg" alt="Excluir medicamento" />
+        </button>
+      </div>
     </div>
   </article>
 </details>

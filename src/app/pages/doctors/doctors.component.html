@@ -3,6 +3,7 @@
 <div class="container">
   <h1>Médicos</h1>
 
+  @if (this.docsList.length > 0 && this.docsList !== null) {
   <table mat-table [dataSource]="docsList" class="mat-elevation-z8">
     <ng-container matColumnDef="Nome">
       <th mat-header-cell *matHeaderCellDef="">Nome</th>
@@ -30,6 +31,9 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
+  } @else {
+  <p>Nenhum médico cadastrado.</p>
+  }
 
   <button class="btn" type="button" [routerLink]="['/newdoctor']">
     Novo médico
