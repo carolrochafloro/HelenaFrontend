@@ -9,3 +9,5 @@ Gestão de medicamentos em uso
 - Busca por palavra
 - Função de renovar medicamento
 - Definir end por duração
+- Email de confirmação
+- Recuperação de senha
