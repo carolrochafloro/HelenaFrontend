@@ -35,6 +35,7 @@ export class DashboardComponent implements OnInit {
           timeId: time.id,
           name: item.name,
           dosage: item.dosage,
+          type: item.type,
           notes: item.notes,
           isTaken: time.IsTaken,
           time: time.dateTime.toString(),

@@ -6,6 +6,7 @@ import { LoginComponent } from '@pages/login/login.component';
 import { MedDetailsComponent } from '@pages/med-details/med-details.component';
 import { NewDoctorComponent } from '@pages/new-doctor/new-doctor.component';
 import { NewMedComponent } from '@pages/new-med/new-med.component';
+import { ProfileComponent } from '@pages/profile/profile.component';
 
 export const routes: Routes = [
   {
@@ -39,5 +40,9 @@ export const routes: Routes = [
   {
     path: 'meds/edit/:id',
     component: NewMedComponent,
+  },
+  {
+    path: 'user',
+    component: ProfileComponent,
   },
 ];

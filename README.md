@@ -11,3 +11,4 @@ Gestão de medicamentos em uso
 - Definir end por duração
 - Email de confirmação
 - Recuperação de senha
+- Persistir 'isTaken'

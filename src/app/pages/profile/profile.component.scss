@@ -1,0 +1,18 @@
+:host {
+  .container {
+    margin-top: 100px;
+    input {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      margin-right: 1rem;
+      margin-bottom: 0.5rem;
+      border: none;
+      background-color: var(--lighter-grey);
+      border-radius: 0.5rem;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+    }
+  }
+}

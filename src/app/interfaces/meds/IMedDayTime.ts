@@ -3,6 +3,7 @@ export interface IMedDayTime {
   timeId: string;
   name: string;
   dosage: string;
+  type: string;
   notes: string;
   isTaken: boolean;
   time: string;

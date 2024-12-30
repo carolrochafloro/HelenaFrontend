@@ -6,4 +6,5 @@ export interface IMedByDay {
   notes: string;
   times: ITimes[];
   dosage: string;
+  type: string;
 }

@@ -1,0 +1,28 @@
+<app-header></app-header>
+
+<div class="container">
+  <form>
+    <div>
+      <label for="name">Nome:</label>
+      <input id="name" [(ngModel)]="user.name" name="name" />
+    </div>
+    <div>
+      <label for="lastName">Sobrenome:</label>
+      <input id="lastName" [(ngModel)]="user.lastName" name="lastName" />
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input id="email" [(ngModel)]="user.email" name="email" />
+    </div>
+    <div>
+      <label for="dateOfBirth">Data de Nascimento:</label>
+      <input
+        id="dateOfBirth"
+        [(ngModel)]="user.dateOfBirth"
+        name="dateOfBirth"
+        type="date"
+      />
+    </div>
+    <button class="btn" type="button" (click)="saveUser()">Salvar</button>
+  </form>
+</div>
