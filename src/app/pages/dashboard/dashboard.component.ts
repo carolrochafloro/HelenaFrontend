@@ -11,11 +11,17 @@ import { HeaderComponent } from '@components/header/header.component';
 import { IMedByDay } from 'app/interfaces/meds/IMedByDay';
 import { IMedDayTime } from 'app/interfaces/meds/IMedDayTime';
 import { MedicationService } from 'app/services/medication.service';
+import { FooterComponent } from '../../components/footer/footer.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [HeaderComponent, DayMedicationChipComponent, RouterModule],
+  imports: [
+    HeaderComponent,
+    DayMedicationChipComponent,
+    RouterModule,
+    FooterComponent,
+  ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

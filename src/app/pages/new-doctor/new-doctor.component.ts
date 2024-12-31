@@ -10,11 +10,12 @@ import { Router } from '@angular/router';
 import { DoctorService } from 'app/services/doctor.service';
 import { INewDoctor } from 'app/interfaces/doctors/INewDoctor';
 import { AppUserService } from 'app/services/app-user.service';
+import { FooterComponent } from '../../components/footer/footer.component';
 
 @Component({
   selector: 'app-new-doctor',
   standalone: true,
-  imports: [HeaderComponent, FormsModule],
+  imports: [HeaderComponent, FormsModule, FooterComponent],
   templateUrl: './new-doctor.component.html',
   styleUrl: './new-doctor.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

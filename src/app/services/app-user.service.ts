@@ -51,7 +51,8 @@ export class AppUserService {
   }
 
   getUser(userId: string): Observable<IRegister> {
-    const endpoint = `${this.#url}/api/User/${userId}`;
+    const endpoint = `${this.#url}/api/AppUser/${userId}`;
+
     const token = this.#authService.getToken();
 
     let headers = new HttpHeaders();
@@ -63,14 +64,13 @@ export class AppUserService {
   }
 
   updateUser(userId: string, user: IRegister): Observable<void> {
-    const endpoint = `${this.#url}/api/User/${userId}`;
+    const endpoint = `${this.#url}/api/AppUser/${userId}`;
     const token = this.#authService.getToken();
 
     let headers = new HttpHeaders();
     if (token) {
       headers = headers.set('Authorization', `Bearer ${token}`);
     }
-
     return this.#http.put<void>(endpoint, user, { headers });
   }
 }

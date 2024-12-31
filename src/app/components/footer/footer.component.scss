@@ -1,0 +1,12 @@
+:host {
+  .container {
+    display: flex;
+    position: fixed;
+    background-color: var(--primary-green);
+    color: var(--white);
+    bottom: 0;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+}

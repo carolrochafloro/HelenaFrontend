@@ -11,10 +11,6 @@
       <input id="lastName" [(ngModel)]="user.lastName" name="lastName" />
     </div>
     <div>
-      <label for="email">Email:</label>
-      <input id="email" [(ngModel)]="user.email" name="email" />
-    </div>
-    <div>
       <label for="dateOfBirth">Data de Nascimento:</label>
       <input
         id="dateOfBirth"
@@ -23,6 +19,13 @@
         type="date"
       />
     </div>
+    <div>
+      <label for="email">Email:</label>
+      <input id="email" [(ngModel)]="user.email" name="email" />
+    </div>
+
     <button class="btn" type="button" (click)="saveUser()">Salvar</button>
   </form>
 </div>
+
+<app-footer />

@@ -13,11 +13,12 @@ import { MedicationService } from 'app/services/medication.service';
 import { FrequencyType } from 'app/interfaces/meds/FrequencyType.enum';
 import { ActivatedRoute } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { FooterComponent } from '../../components/footer/footer.component';
 
 @Component({
   selector: 'app-med-details',
   standalone: true,
-  imports: [HeaderComponent, DatePipe],
+  imports: [HeaderComponent, DatePipe, FooterComponent],
   templateUrl: './med-details.component.html',
   styleUrl: './med-details.component.scss',
   changeDetection: ChangeDetectionStrategy.Default,

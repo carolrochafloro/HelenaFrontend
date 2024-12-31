@@ -10,11 +10,12 @@ import { HeaderComponent } from '@components/header/header.component';
 import { MedListComponent } from '@components/med-list/med-list.component';
 import { IMedication } from 'app/interfaces/meds/IMedication';
 import { MedicationService } from 'app/services/medication.service';
+import { FooterComponent } from '../../components/footer/footer.component';
 
 @Component({
   selector: 'app-all-meds',
   standalone: true,
-  imports: [HeaderComponent, MedListComponent, RouterLink],
+  imports: [HeaderComponent, MedListComponent, RouterLink, FooterComponent],
   templateUrl: './all-meds.component.html',
   styleUrl: './all-meds.component.scss',
   changeDetection: ChangeDetectionStrategy.Default,

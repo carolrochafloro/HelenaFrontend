@@ -15,11 +15,12 @@ import { INewMedication } from 'app/interfaces/meds/INewMedication';
 import { MedicationService } from 'app/services/medication.service';
 import { DoctorService } from 'app/services/doctor.service';
 import { IMedication } from 'app/interfaces/meds/IMedication';
+import { FooterComponent } from '../../components/footer/footer.component';
 
 @Component({
   selector: 'app-new-med',
   standalone: true,
-  imports: [HeaderComponent, FormsModule],
+  imports: [HeaderComponent, FormsModule, FooterComponent],
   templateUrl: './new-med.component.html',
   styleUrl: './new-med.component.scss',
 })

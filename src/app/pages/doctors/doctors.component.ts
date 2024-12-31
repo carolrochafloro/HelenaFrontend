@@ -10,11 +10,18 @@ import { RouterLink } from '@angular/router';
 import { HeaderComponent } from '@components/header/header.component';
 import { IDoctor } from 'app/interfaces/doctors/IDoctor';
 import { DoctorService } from 'app/services/doctor.service';
+import { FooterComponent } from '../../components/footer/footer.component';
 
 @Component({
   selector: 'app-doctors',
   standalone: true,
-  imports: [HeaderComponent, MatDialogModule, MatTableModule, RouterLink],
+  imports: [
+    HeaderComponent,
+    MatDialogModule,
+    MatTableModule,
+    RouterLink,
+    FooterComponent,
+  ],
   templateUrl: './doctors.component.html',
   styleUrl: './doctors.component.scss',
   changeDetection: ChangeDetectionStrategy.Default,
