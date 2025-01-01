@@ -184,6 +184,8 @@ export class NewMedComponent implements OnInit {
   }
 
   submitMedication() {
+    console.log(this.newMedication);
+
     if (this.isEditMode) {
       this.medication = {
         id: this.medication.id,
@@ -209,6 +211,7 @@ export class NewMedComponent implements OnInit {
         error: (err) => {
           console.error('Não foi possível atualizar o remédio', err);
           alert('Não foi possível atualizar o medicamento.');
+          this.router.navigate(['/new-med']);
         },
       });
     } else {
@@ -219,6 +222,7 @@ export class NewMedComponent implements OnInit {
         error: (err) => {
           console.error('Não foi possível cadastrar o remédio', err);
           alert('Não foi possível cadastrar o medicamento.');
+          this.router.navigate(['/new-med']);
         },
       });
     }

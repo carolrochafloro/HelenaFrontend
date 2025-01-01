@@ -11,6 +11,7 @@ import { DoctorService } from 'app/services/doctor.service';
 import { INewDoctor } from 'app/interfaces/doctors/INewDoctor';
 import { AppUserService } from 'app/services/app-user.service';
 import { FooterComponent } from '../../components/footer/footer.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-new-doctor',
@@ -21,6 +22,8 @@ import { FooterComponent } from '../../components/footer/footer.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NewDoctorComponent implements OnInit {
+  constructor(private snackBar: MatSnackBar) {}
+
   #docService = inject(DoctorService);
   #router = inject(Router);
   #userService = inject(AppUserService);
@@ -37,14 +40,19 @@ export class NewDoctorComponent implements OnInit {
   onSubmit() {
     this.#docService.newDoctor(this.doctorData).subscribe({
       next: () => {
+        this.snackBar.open('Médico cadastrado!', 'Fechar', {
+          duration: 5000,
+          verticalPosition: 'top',
+          horizontalPosition: 'center',
+        });
         this.#router.navigate(['/doctors']);
       },
       error: (err) => {
         console.error(err);
-        alert('Erro ao cadastrar médico. Tente novamente!');
       },
     });
   }
 
+  // mantendo para depois usar a página para editar médicos
   ngOnInit(): void {}
 }

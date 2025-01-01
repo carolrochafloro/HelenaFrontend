@@ -5,6 +5,7 @@ import { IRegister } from 'app/interfaces/users/IRegister';
 import { jwtDecode } from 'jwt-decode';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
+import { IApiResponse } from 'app/interfaces/IApiResponse';
 
 @Injectable({
   providedIn: 'root',
@@ -63,7 +64,7 @@ export class AppUserService {
     return this.#http.get<IRegister>(endpoint, { headers });
   }
 
-  updateUser(userId: string, user: IRegister): Observable<void> {
+  updateUser(userId: string, user: IRegister): Observable<IApiResponse> {
     const endpoint = `${this.#url}/api/AppUser/${userId}`;
     const token = this.#authService.getToken();
 
@@ -71,6 +72,17 @@ export class AppUserService {
     if (token) {
       headers = headers.set('Authorization', `Bearer ${token}`);
     }
-    return this.#http.put<void>(endpoint, user, { headers });
+    return this.#http.put<IApiResponse>(endpoint, user, { headers });
+  }
+
+  deleteUser(userId: string): Observable<IApiResponse> {
+    const endpoint = `${this.#url}/api/AppUser/${userId}`;
+    const token = this.#authService.getToken();
+
+    let headers = new HttpHeaders();
+    if (token) {
+      headers = headers.set('Authorization', `Bearer ${token}`);
+    }
+    return this.#http.delete<IApiResponse>(endpoint, { headers });
   }
 }

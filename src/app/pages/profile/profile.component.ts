@@ -1,15 +1,11 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  inject,
-  OnInit,
-} from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from '../../components/header/header.component';
 import { AppUserService } from 'app/services/app-user.service';
-import { AuthService } from 'app/services/auth.service';
 import { IRegister } from 'app/interfaces/users/IRegister';
 import { FooterComponent } from '../../components/footer/footer.component';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-profile',
@@ -19,6 +15,8 @@ import { FooterComponent } from '../../components/footer/footer.component';
   styleUrl: './profile.component.scss',
 })
 export class ProfileComponent implements OnInit {
+  constructor(private router: Router, private snackBar: MatSnackBar) {}
+
   #userService = inject(AppUserService);
 
   userId: string | null = '';
@@ -39,8 +37,17 @@ export class ProfileComponent implements OnInit {
         next: (userData) => {
           this.user = userData;
         },
-        error: (error) => {
-          console.error('Erro ao obter os dados do usuário:', error);
+        error: (err) => {
+          console.error(err);
+          this.snackBar.open(
+            'Erro ao buscar o usuário. Tente novamente mais tarde.',
+            'Fechar',
+            {
+              duration: 5000,
+              verticalPosition: 'top',
+              horizontalPosition: 'center',
+            }
+          );
         },
       });
     }
@@ -48,16 +55,77 @@ export class ProfileComponent implements OnInit {
 
   saveUser(): void {
     if (this.userId) {
-      this.#userService.updateUser(this.userId, this.user).subscribe(
-        () => {
-          console.log('Usuário atualizado com sucesso!');
-          alert('Perfil atualizado com sucesso!');
+      this.#userService.updateUser(this.userId, this.user).subscribe({
+        next: (response) => {
+          if (response.status) {
+            this.snackBar.open(response.message, 'Fechar', {
+              duration: 5000,
+              verticalPosition: 'top',
+              horizontalPosition: 'center',
+            });
+            window.location.reload();
+          } else {
+            this.snackBar.open(response.message, 'Fechar', {
+              duration: 5000,
+              verticalPosition: 'top',
+              horizontalPosition: 'center',
+            });
+          }
         },
-        (error) => {
-          console.error('Erro ao atualizar o usuário:', error);
-          alert('Erro ao atualizar perfil.');
-        }
+        error: (err) => {
+          this.snackBar.open(
+            'Erro ao atualizar os dados. Tente novamente mais tarde.',
+            'Fechar',
+            {
+              duration: 5000,
+              verticalPosition: 'top',
+              horizontalPosition: 'center',
+            }
+          );
+          console.error(err);
+        },
+      });
+    }
+  }
+
+  deleteUser(): void {
+    if (this.userId) {
+      const confirmed = confirm(
+        'Deseja deletar o seu perfil? Esse processo é irreversível e todos os dados serão perdidos.'
       );
+
+      if (confirmed) {
+        this.#userService.deleteUser(this.userId).subscribe({
+          next: (response) => {
+            if (response.status) {
+              this.snackBar.open(response.message, 'Fechar', {
+                duration: 5000,
+                verticalPosition: 'top',
+                horizontalPosition: 'center',
+              });
+              this.router.navigate(['/']);
+            } else {
+              this.snackBar.open(response.message, 'Fechar', {
+                duration: 5000,
+                verticalPosition: 'top',
+                horizontalPosition: 'center',
+              });
+            }
+          },
+          error: (error) => {
+            this.snackBar.open(
+              'Erro ao deletar o perfil. Tente novamente mais tarde.',
+              'Fechar',
+              {
+                duration: 5000,
+                verticalPosition: 'top',
+                horizontalPosition: 'center',
+              }
+            );
+            console.error(error);
+          },
+        });
+      }
     }
   }
 }

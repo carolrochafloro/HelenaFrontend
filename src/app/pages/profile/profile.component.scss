@@ -17,5 +17,15 @@
       background-color: var(--lighter-grey);
       border-radius: 0.5rem;
     }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+
+      .delete-btn {
+        color: var(--pink);
+      }
+    }
   }
 }

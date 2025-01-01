@@ -5,6 +5,7 @@ import { INewDoctor } from 'app/interfaces/doctors/INewDoctor';
 import { IDoctor } from 'app/interfaces/doctors/IDoctor';
 import { AuthService } from './auth.service';
 import { AppUserService } from './app-user.service';
+import { IApiResponse } from 'app/interfaces/IApiResponse';
 
 @Injectable({
   providedIn: 'root',
@@ -39,5 +40,18 @@ export class DoctorService {
     }
 
     return this.#http.post<IDoctor[]>(endpoint, { userId }, { headers });
+  }
+
+  public deleteDoctor(doctorId: string): Observable<IApiResponse> {
+    const endpoint = `${this.#url}/api/Doctor/delete/${doctorId}`;
+    const token = this.#authService.getToken();
+
+    let headers = new HttpHeaders();
+
+    if (token) {
+      headers = headers.set('Authorization', `Bearer ${token}`);
+    }
+
+    return this.#http.delete<IApiResponse>(endpoint, { headers });
   }
 }

@@ -24,7 +24,10 @@
       <input id="email" [(ngModel)]="user.email" name="email" />
     </div>
 
-    <button class="btn" type="button" (click)="saveUser()">Salvar</button>
+    <div class="actions">
+      <button class="btn" type="button" (click)="saveUser()">Salvar</button>
+      <button class="delete-btn" (click)="deleteUser()">Excluir conta</button>
+    </div>
   </form>
 </div>
 

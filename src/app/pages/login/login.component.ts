@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  inject,
-  OnInit,
-} from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { Router, RouterModule } from '@angular/router';
@@ -11,7 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ILogin } from 'app/interfaces/users/ILogin';
 import { IRegister } from 'app/interfaces/users/IRegister';
 import { AuthService } from 'app/services/auth.service';
-import { response } from 'express';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -19,9 +14,10 @@ import { response } from 'express';
   imports: [FormsModule, MatFormFieldModule, MatInputModule, RouterModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent implements OnInit {
+  constructor(private snackBar: MatSnackBar) {}
+
   loginData: ILogin = { email: '', password: '' };
   registerData: IRegister = {
     name: '',
@@ -38,11 +34,23 @@ export class LoginComponent implements OnInit {
   onLogin() {
     this.#authService.login(this.loginData).subscribe({
       next: (response) => {
-        this.#router.navigate(['/dashboard']);
+        if (response.status) {
+          this.#router.navigate(['/dashboard']);
+        } else {
+          this.snackBar.open(response.message, 'Fechar', {
+            duration: 5000,
+            horizontalPosition: 'center',
+            verticalPosition: 'top',
+          });
+        }
       },
       error: (err) => {
         console.error(err);
-        alert('Falha ao realizar o login. Tente novamente!');
+        this.snackBar.open('Erro', 'Fechar', {
+          duration: 5000,
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
+        });
       },
     });
   }
@@ -50,12 +58,18 @@ export class LoginComponent implements OnInit {
   onRegister() {
     this.#authService.register(this.registerData).subscribe({
       next: (response) => {
-        this.#router.navigate(['/dashboard']);
+        if (response.status) {
+          this.#router.navigate(['/dashboard']);
+        } else {
+          this.snackBar.open(response.message, 'Fechar', {
+            duration: 5000,
+            horizontalPosition: 'center',
+            verticalPosition: 'top',
+          });
+        }
       },
       error: (err) => {
         console.error(err);
-
-        alert('Falha ao cadastrar. Tente novamente!');
       },
     });
   }
