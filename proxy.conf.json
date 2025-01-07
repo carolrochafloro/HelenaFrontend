@@ -1,6 +1,5 @@
 {
   "/api": {
-    // "target": "https://localhost:7249",
     "target": "helena-backend-bay.vercel.app",
     "secure": false,
     "changeOrigin": true,
