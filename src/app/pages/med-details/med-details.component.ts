@@ -51,7 +51,7 @@ export class MedDetailsComponent implements OnInit {
     const grouped = new Map<string, ITimes[]>();
 
     this.med.times.forEach((item) => {
-      const date = item.dateTime.split('T')[0];
+      const date = item.dateTime.toISOString().split('T')[0];
 
       if (!grouped.has(date)) {
         grouped.set(date, []);

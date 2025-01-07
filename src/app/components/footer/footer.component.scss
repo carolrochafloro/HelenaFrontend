@@ -1,6 +1,7 @@
 :host {
   .container {
     display: flex;
+    padding: 1rem;
     position: fixed;
     background-color: var(--primary-green);
     color: var(--white);
@@ -9,5 +10,8 @@
     justify-content: center;
     align-items: center;
     height: 10px;
+    p {
+      font-size: 0.5rem;
+    }
   }
 }

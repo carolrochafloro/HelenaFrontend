@@ -23,7 +23,7 @@
       <p>Não existem horários salvos para esse medicamento.</p>
       } @else { @for (item of med.times; track item.id) {
       <div class="time">
-        {{ item.dateTime | date : "dd/MM/yyyy - HH:mm" }}
+        {{ item.dateTime | date : "dd/MM/yyyy - HH:mm" : "UTC" }}
       </div>
       } }
     </div>

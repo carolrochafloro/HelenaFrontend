@@ -29,7 +29,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class DoctorsComponent implements OnInit {
   constructor(private snackBar: MatSnackBar, private router: Router) {}
 
-  displayedColumns: string[] = ['Nome', 'Especialidade', 'Contato', 'Deletar'];
+  displayedColumns: string[] = ['Nome', 'Especialidade', 'Contato', 'Excluir'];
 
   #docService = inject(DoctorService);
   public docsList: IDoctor[] = [];

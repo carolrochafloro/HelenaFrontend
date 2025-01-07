@@ -5,7 +5,7 @@
   </div>
 
   <div class="med-time" aria-label="Horário">
-    <p>{{ med.time | date : "shortTime" }}</p>
+    <p>{{ med.time | date : "shortTime" : "UTC" }}</p>
   </div>
 
   <div class="med-check" aria-label="Notas e confirmação">

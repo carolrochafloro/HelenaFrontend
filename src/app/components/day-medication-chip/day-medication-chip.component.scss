@@ -57,6 +57,7 @@
 
       .input {
         justify-content: flex-end;
+        display: none;
         input {
           cursor: pointer;
           position: absolute;
@@ -106,7 +107,7 @@
 
       .med-check {
         .notes {
-          display: none;
+          // display: none;
         }
       }
     }
