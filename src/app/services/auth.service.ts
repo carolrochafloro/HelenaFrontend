@@ -12,7 +12,7 @@ import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
   providedIn: 'root',
 })
 export class AuthService {
-  #url = '/api';
+  #url = 'https://helenabackend.onrender.com';
   #http = inject(HttpClient);
   #router = inject(Router);
 

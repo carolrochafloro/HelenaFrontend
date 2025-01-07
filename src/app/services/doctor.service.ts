@@ -11,7 +11,7 @@ import { IApiResponse } from 'app/interfaces/IApiResponse';
   providedIn: 'root',
 })
 export class DoctorService {
-  #url = '/api';
+  #url = 'https://helenabackend.onrender.com';
   #http = inject(HttpClient);
   #authService = inject(AuthService);
   #userService = inject(AppUserService);

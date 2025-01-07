@@ -12,7 +12,7 @@ import { IApiResponse } from 'app/interfaces/IApiResponse';
 })
 export class AppUserService {
   #http = inject(HttpClient);
-  #url = '/api';
+  #url = 'https://helenabackend.onrender.com';
   #authService = inject(AuthService);
 
   getUserName(): string | null {

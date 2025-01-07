@@ -15,7 +15,7 @@ import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 })
 export class MedicationService {
   #http = inject(HttpClient);
-  #url = '/api';
+  #url = 'https://helenabackend.onrender.com';
   #authService = inject(AuthService);
   #userService = inject(AppUserService);
 
