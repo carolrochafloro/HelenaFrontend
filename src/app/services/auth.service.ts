@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { IApiResponse } from 'app/interfaces/IApiResponse';
@@ -18,8 +18,12 @@ export class AuthService {
 
   public register(register: IRegister): Observable<IApiResponse> {
     const endpoint = `${this.#url}/api/AppUser/register`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Origin: 'https://www.helenamed.com.br',
+    });
 
-    return this.#http.post<IApiResponse>(endpoint, register).pipe(
+    return this.#http.post<IApiResponse>(endpoint, register, { headers }).pipe(
       tap((response) => {
         this.saveToken(response.message);
       })
