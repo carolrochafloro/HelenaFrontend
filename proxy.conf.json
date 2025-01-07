@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "helena-backend-5jxt25b9j-carolrochafloros-projects.vercel.app",
+    "target": "https://helenabackend.onrender.com",
     "secure": false,
     "changeOrigin": true,
     "pathRewrite": {
