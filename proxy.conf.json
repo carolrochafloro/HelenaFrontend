@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "helena-backend-bay.vercel.app",
+    "target": "helena-backend-5jxt25b9j-carolrochafloros-projects.vercel.app",
     "secure": false,
     "changeOrigin": true,
     "pathRewrite": {
