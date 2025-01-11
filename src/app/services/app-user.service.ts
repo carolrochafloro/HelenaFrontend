@@ -56,7 +56,10 @@ export class AppUserService {
 
     const token = this.#authService.getToken();
 
-    let headers = new HttpHeaders();
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Origin: 'https://www.helenamed.com.br',
+    });
     if (token) {
       headers = headers.set('Authorization', `Bearer ${token}`);
     }
@@ -68,7 +71,10 @@ export class AppUserService {
     const endpoint = `${this.#url}/api/AppUser/${userId}`;
     const token = this.#authService.getToken();
 
-    let headers = new HttpHeaders();
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Origin: 'https://www.helenamed.com.br',
+    });
     if (token) {
       headers = headers.set('Authorization', `Bearer ${token}`);
     }
@@ -79,7 +85,10 @@ export class AppUserService {
     const endpoint = `${this.#url}/api/AppUser/${userId}`;
     const token = this.#authService.getToken();
 
-    let headers = new HttpHeaders();
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Origin: 'https://www.helenamed.com.br',
+    });
     if (token) {
       headers = headers.set('Authorization', `Bearer ${token}`);
     }

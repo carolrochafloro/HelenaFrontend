@@ -3,19 +3,22 @@
     text-align: center;
     color: var(--primary-green);
     font-weight: bolder;
-    margin-top: 3rem;
+    margin-top: 1rem;
+    img {
+      height: 60px;
+    }
   }
   .container {
     display: flex;
+    gap: 2rem;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     background-color: var(--lighter-grey);
-    margin: 3rem 6rem;
+    margin: 1rem 6rem;
     border-radius: 2rem;
     align-items: start;
     box-shadow: 0rem 0.5rem 1rem rgba(0, 0, 0, 0.2);
-
     input {
       padding: 0.5rem 1rem;
       font-size: 1rem;
@@ -37,7 +40,7 @@
       flex-wrap: wrap;
       background-color: var(--primary-green);
       text-align: center;
-      min-height: 80%;
+      min-height: 60%;
       border-radius: 2rem;
       flex: 1;
       box-shadow: 0rem 0.5rem 1rem rgba(0, 0, 0, 0.2);
@@ -45,7 +48,7 @@
       h2 {
         flex: 1;
         color: var(--white);
-        margin-top: 2rem;
+        margin-top: 0.5rem;
         margin-bottom: 1rem;
       }
 
@@ -66,14 +69,14 @@
       button {
         background-color: var(--lighter-grey);
         color: var(--primary-green);
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
       }
     }
 
     .login {
       background-color: var(--lighter-grey);
       text-align: center;
-      min-height: 80%;
+      min-height: 60%;
       border-radius: 2rem;
       justify-content: center;
       flex: 1;
@@ -104,6 +107,7 @@
 
           label {
             justify-self: center;
+            color: var(--white);
           }
 
           input {

@@ -29,8 +29,11 @@
           name="password"
           id="passwordRegister"
           placeholder="Senha"
+          pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
           [(ngModel)]="registerData.password"
+          title="A senha deve conter pelo menos 8 caracteres, incluindo letras e números."
         />
+
         <div class="dateOfBirth">
           <label for="birthdate">Data de nascimento</label>
           <input

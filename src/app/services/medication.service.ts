@@ -1,7 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable, signal, Type } from '@angular/core';
-import { IDoctor } from 'app/interfaces/doctors/IDoctor';
-import { INewDoctor } from 'app/interfaces/doctors/INewDoctor';
 import { IMedByDay } from 'app/interfaces/meds/IMedByDay';
 import { IMedication } from 'app/interfaces/meds/IMedication';
 import { INewMedication } from 'app/interfaces/meds/INewMedication';

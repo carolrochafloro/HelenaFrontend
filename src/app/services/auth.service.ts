@@ -32,8 +32,12 @@ export class AuthService {
 
   public login(login: ILogin): Observable<IApiResponse> {
     const endpoint = `${this.#url}/api/AppUser/login`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Origin: 'https://www.helenamed.com.br',
+    });
 
-    return this.#http.post<IApiResponse>(endpoint, login).pipe(
+    return this.#http.post<IApiResponse>(endpoint, login, { headers }).pipe(
       tap((response) => {
         this.saveToken(response.message);
       })
