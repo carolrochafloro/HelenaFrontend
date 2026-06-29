@@ -5,7 +5,7 @@ import { IApiResponse } from 'app/interfaces/IApiResponse';
 import { ILogin } from 'app/interfaces/users/ILogin';
 import { IRegister } from 'app/interfaces/users/IRegister';
 import { Observable, tap } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +16,7 @@ export class AuthService {
   #router = inject(Router);
 
   public register(register: IRegister): Observable<IApiResponse> {
-    const endpoint = `${this.#url}/api/AppUser/register`;
+    const endpoint = `${this.#apiUrl}/api/AppUser/register`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
@@ -29,7 +29,7 @@ export class AuthService {
   }
 
   public login(login: ILogin): Observable<IApiResponse> {
-    const endpoint = `${this.#url}/api/AppUser/login`;
+    const endpoint = `${this.#apiUrl}/api/AppUser/login`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });

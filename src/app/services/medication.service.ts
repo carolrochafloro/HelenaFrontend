@@ -6,7 +6,7 @@ import { INewMedication } from 'app/interfaces/meds/INewMedication';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { AppUserService } from './app-user.service';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../environments/environment';
 import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 
 @Injectable({
@@ -23,7 +23,7 @@ export class MedicationService {
 
   public getAllMeds(): Observable<IMedication[]> {
     const userId = this.#userService.getUserId();
-    const endpoint = `${this.#url}/api/Medication/get/all/${userId}`;
+    const endpoint = `${this.#apiUrl}/api/Medication/get/all/${userId}`;
     const token = this.#authService.getToken();
     let headers = new HttpHeaders();
 
@@ -35,7 +35,7 @@ export class MedicationService {
   }
 
   public getListbyDate(date: string): Observable<IMedByDay[]> {
-    const endpoint = `${this.#url}/api/Medication/get/date`;
+    const endpoint = `${this.#apiUrl}/api/Medication/get/date`;
     const token = this.#authService.getToken();
     const userId = this.#userService.getUserId();
 
@@ -54,7 +54,7 @@ export class MedicationService {
   }
 
   public newMedication(med: INewMedication): Observable<INewMedication> {
-    const endpoint = `${this.#url}/api/Medication`;
+    const endpoint = `${this.#apiUrl}/api/Medication`;
     const token = this.#authService.getToken();
     const userId = this.#userService.getUserId();
 
@@ -75,7 +75,7 @@ export class MedicationService {
     if (token) {
       headers = headers.set('Authorization', `Bearer ${token}`);
     }
-    const endpoint = `${this.#url}/api/Medication/get/${id}`;
+    const endpoint = `${this.#apiUrl}/api/Medication/get/${id}`;
 
     return this.#http.get<IMedication>(endpoint, { headers });
   }
@@ -87,13 +87,13 @@ export class MedicationService {
     if (token) {
       headers = headers.set('Authorization', `Bearer ${token}`);
     }
-    const endpoint = `${this.#url}/api/Medication/delete/${id}`;
+    const endpoint = `${this.#apiUrl}/api/Medication/delete/${id}`;
 
     return this.#http.delete<void>(endpoint, { headers });
   }
 
   public updateMed(med: IMedication): Observable<IMedication> {
-    const endpoint = `${this.#url}/api/Medication/update/${med.id}`;
+    const endpoint = `${this.#apiUrl}/api/Medication/update/${med.id}`;
     const token = this.#authService.getToken();
 
     let headers = new HttpHeaders();

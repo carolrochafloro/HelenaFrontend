@@ -6,7 +6,7 @@ import { IDoctor } from 'app/interfaces/doctors/IDoctor';
 import { AuthService } from './auth.service';
 import { AppUserService } from './app-user.service';
 import { IApiResponse } from 'app/interfaces/IApiResponse';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +18,7 @@ export class DoctorService {
   #userService = inject(AppUserService);
 
   public newDoctor(doc: INewDoctor): Observable<IDoctor> {
-    const endpoint = `${this.#url}/api/Doctor/create`;
+    const endpoint = `${this.#apiUrl}/api/Doctor/create`;
     const token = this.#authService.getToken();
 
     let headers = new HttpHeaders();
@@ -30,7 +30,7 @@ export class DoctorService {
   }
 
   public getDoctors(): Observable<IDoctor[]> {
-    const endpoint = `${this.#url}/api/Doctor/get`;
+    const endpoint = `${this.#apiUrl}/api/Doctor/get`;
     const token = this.#authService.getToken();
     const userId = this.#userService.getUserId();
 
@@ -44,7 +44,7 @@ export class DoctorService {
   }
 
   public deleteDoctor(doctorId: string): Observable<IApiResponse> {
-    const endpoint = `${this.#url}/api/Doctor/delete/${doctorId}`;
+    const endpoint = `${this.#apiUrl}/api/Doctor/delete/${doctorId}`;
     const token = this.#authService.getToken();
 
     let headers = new HttpHeaders();
