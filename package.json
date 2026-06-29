@@ -5,6 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:prod": "npm run generate:env && ng build --configuration production",
+    "generate:env": "node scripts/generate-environment.js",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:Helena-FrontEnd": "node dist/helena-front-end/server/server.mjs"

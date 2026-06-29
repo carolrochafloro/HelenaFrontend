@@ -6,6 +6,7 @@ import { INewMedication } from 'app/interfaces/meds/INewMedication';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { AppUserService } from './app-user.service';
+import { environment } from 'src/environments/environment';
 import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 
 @Injectable({
@@ -13,7 +14,7 @@ import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 })
 export class MedicationService {
   #http = inject(HttpClient);
-  #url = 'https://helenabackend.onrender.com';
+  #apiUrl = environment.apiUrl;
   #authService = inject(AuthService);
   #userService = inject(AppUserService);
 

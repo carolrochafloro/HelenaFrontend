@@ -4,15 +4,14 @@ import { Router } from '@angular/router';
 import { IApiResponse } from 'app/interfaces/IApiResponse';
 import { ILogin } from 'app/interfaces/users/ILogin';
 import { IRegister } from 'app/interfaces/users/IRegister';
-import { response } from 'express';
 import { Observable, tap } from 'rxjs';
-import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  #url = 'https://helenabackend.onrender.com';
+  #apiUrl = environment.apiUrl;
   #http = inject(HttpClient);
   #router = inject(Router);
 
@@ -20,7 +19,6 @@ export class AuthService {
     const endpoint = `${this.#url}/api/AppUser/register`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      Origin: 'https://www.helenamed.com.br',
     });
 
     return this.#http.post<IApiResponse>(endpoint, register, { headers }).pipe(
@@ -34,7 +32,6 @@ export class AuthService {
     const endpoint = `${this.#url}/api/AppUser/login`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      Origin: 'https://www.helenamed.com.br',
     });
 
     return this.#http.post<IApiResponse>(endpoint, login, { headers }).pipe(

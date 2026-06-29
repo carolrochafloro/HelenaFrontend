@@ -6,12 +6,13 @@ import { IDoctor } from 'app/interfaces/doctors/IDoctor';
 import { AuthService } from './auth.service';
 import { AppUserService } from './app-user.service';
 import { IApiResponse } from 'app/interfaces/IApiResponse';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DoctorService {
-  #url = 'https://helenabackend.onrender.com';
+  #apiUrl = environment.apiUrl;
   #http = inject(HttpClient);
   #authService = inject(AuthService);
   #userService = inject(AppUserService);

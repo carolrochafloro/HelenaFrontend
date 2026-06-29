@@ -6,13 +6,14 @@ import { jwtDecode } from 'jwt-decode';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { IApiResponse } from 'app/interfaces/IApiResponse';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AppUserService {
   #http = inject(HttpClient);
-  #url = 'https://helenabackend.onrender.com';
+  #apiUrl = environment.apiUrl;
   #authService = inject(AuthService);
 
   getUserName(): string | null {
@@ -52,13 +53,12 @@ export class AppUserService {
   }
 
   getUser(userId: string): Observable<IRegister> {
-    const endpoint = `${this.#url}/api/AppUser/${userId}`;
+    const endpoint = `${this.#apiUrl}/api/AppUser/${userId}`;
 
     const token = this.#authService.getToken();
 
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      Origin: 'https://www.helenamed.com.br',
     });
     if (token) {
       headers = headers.set('Authorization', `Bearer ${token}`);
@@ -68,12 +68,11 @@ export class AppUserService {
   }
 
   updateUser(userId: string, user: IRegister): Observable<IApiResponse> {
-    const endpoint = `${this.#url}/api/AppUser/${userId}`;
+    const endpoint = `${this.#apiUrl}/api/AppUser/${userId}`;
     const token = this.#authService.getToken();
 
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      Origin: 'https://www.helenamed.com.br',
     });
     if (token) {
       headers = headers.set('Authorization', `Bearer ${token}`);
@@ -82,12 +81,11 @@ export class AppUserService {
   }
 
   deleteUser(userId: string): Observable<IApiResponse> {
-    const endpoint = `${this.#url}/api/AppUser/${userId}`;
+    const endpoint = `${this.#apiUrl}/api/AppUser/${userId}`;
     const token = this.#authService.getToken();
 
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      Origin: 'https://www.helenamed.com.br',
     });
     if (token) {
       headers = headers.set('Authorization', `Bearer ${token}`);
